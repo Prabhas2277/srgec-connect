@@ -1,0 +1,338 @@
+@import "tailwindcss";
+
+:root {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-sans);
+  
+  /* Color system - Dark Mode by default, but customizable */
+  --bg-primary: #0a0b10;
+  --bg-secondary: #12141f;
+  --border-glow: rgba(139, 92, 246, 0.15);
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --accent-purple: #8b5cf6;
+  --accent-cyan: #06b6d4;
+  --glass-bg: rgba(18, 20, 31, 0.6);
+  --glass-blur: blur(16px);
+  --panel-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.light-theme {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --border-glow: rgba(139, 92, 246, 0.1);
+  --border-glass: rgba(15, 23, 42, 0.08);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --accent-purple: #7c3aed;
+  --accent-cyan: #0891b2;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-blur: blur(16px);
+  --panel-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--panel-shadow);
+  border-radius: 16px;
+}
+
+.glass-panel-interactive {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--panel-shadow);
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel-interactive:hover {
+  transform: translateY(-4px);
+  border-color: rgba(139, 92, 246, 0.35);
+  box-shadow: 0 12px 40px 0 rgba(139, 92, 246, 0.15);
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-glass);
+  border-radius: 10px;
+  padding: 10px 16px;
+  color: var(--text-primary);
+  outline: none;
+  transition: all 0.2s ease;
+}
+.light-theme .glass-input {
+  background: rgba(15, 23, 42, 0.02);
+}
+
+.glass-input:focus {
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 12px 0 rgba(139, 92, 246, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.glass-button {
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+  color: white;
+  border-radius: 10px;
+  font-weight: 600;
+  padding: 10px 24px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px 0 rgba(139, 92, 246, 0.25);
+  cursor: pointer;
+  border: none;
+}
+
+.glass-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px 0 rgba(139, 92, 246, 0.4);
+  filter: brightness(1.1);
+}
+
+.glass-button-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  color: var(--text-primary);
+  border-radius: 10px;
+  font-weight: 500;
+  padding: 10px 24px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.glass-button-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--accent-purple);
+}
+
+/* Background Glow elements for Sci-fi Visual Premium feel */
+.bg-glow-purple {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, rgba(0,0,0,0) 70%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bg-glow-cyan {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, rgba(0,0,0,0) 70%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-purple);
+}
+
+/* Sci-Fi Space Grid Background */
+.space-grid-bg {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center;
+}
+
+.light-theme .space-grid-bg {
+  background-image: 
+    linear-gradient(rgba(15, 23, 42, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.015) 1px, transparent 1px);
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.pulse-glow {
+  animation: pulseGlow 4s infinite ease-in-out;
+}
+
+/* VisionOS UI Premium Layouts */
+.glass-vision {
+  background: rgba(18, 20, 31, 0.45);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 4px 30px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 24px 70px rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+}
+
+.glass-vision-interactive {
+  background: rgba(18, 20, 31, 0.45);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 4px 30px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 24px 70px rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+}
+
+.glass-vision-interactive:hover {
+  transform: scale(1.02) translateY(-4px) translateZ(10px);
+  border-color: rgba(6, 182, 212, 0.35);
+  box-shadow: 
+    0 0 30px rgba(6, 182, 212, 0.15),
+    0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+/* 3D Isometric Campus mesh projection */
+.scene-3d {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+.map-mesh-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.building-3d {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
+  cursor: pointer;
+}
+
+/* 3D Cube Faces for Spatial Buildings */
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+.face-top {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.8), rgba(6, 182, 212, 0.8));
+  transform: rotateX(0deg) translateZ(35px);
+  box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+.face-front {
+  background: linear-gradient(to top, rgba(17, 24, 39, 0.9), rgba(139, 92, 246, 0.6));
+  transform: rotateX(-90deg) translateZ(35px);
+  height: 70px;
+  transform-origin: bottom;
+}
+
+.face-right {
+  background: linear-gradient(to top, rgba(17, 24, 39, 0.9), rgba(6, 182, 212, 0.6));
+  transform: rotateY(90deg) translateZ(35px);
+  width: 70px;
+  transform-origin: right;
+}
+
+.building-3d:hover {
+  transform: translateZ(25px);
+}
+
+.building-3d:hover .face-top {
+  background: linear-gradient(135deg, #a78bfa, #22d3ee);
+  box-shadow: 
+    0 0 25px rgba(6, 182, 212, 0.6),
+    inset 0 0 15px rgba(255, 255, 255, 0.6);
+}
+
+/* Breathing Hologram Orb for AI Assistant */
+@keyframes aiBreathe {
+  0%, 100% {
+    transform: scale(1) translateZ(0);
+    box-shadow: 
+      0 0 30px rgba(139, 92, 246, 0.4),
+      0 0 60px rgba(6, 182, 212, 0.2),
+      inset 0 0 20px rgba(255, 255, 255, 0.3);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.1) translateZ(15px);
+    box-shadow: 
+      0 0 45px rgba(139, 92, 246, 0.6),
+      0 0 90px rgba(6, 182, 212, 0.4),
+      inset 0 0 30px rgba(255, 255, 255, 0.5);
+    filter: brightness(1.2) hue-rotate(15deg);
+  }
+}
+
+.ai-orb-hologram {
+  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.9) 0%, rgba(6, 182, 212, 0.6) 40%, rgba(139, 92, 246, 0.8) 80%);
+  animation: aiBreathe 4s infinite ease-in-out;
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow, filter;
+}
+
+/* Bento grid dynamic card shadows */
+.bento-card-active {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-card-active:hover {
+  transform: scale(1.015) translateY(-2px);
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 
+    0 0 30px rgba(139, 92, 246, 0.1),
+    0 20px 50px rgba(0, 0, 0, 0.4);
+}
+

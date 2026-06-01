@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+dist/
+dist-ssr/
+.venv/
+venv/
+env/
+*.pyc
+__pycache__/
+
+# Databases and environment
+*.db
+*.sqlite3
+.env
+.env.*
+!.env.example
+
+# Local uploads
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# IDEs and OS
+.vscode/
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.log
