@@ -36,21 +36,29 @@ body {
   margin: 0;
   background-color: var(--bg-primary);
   background-image: 
-    linear-gradient(rgba(7, 8, 12, 0.88), rgba(7, 8, 12, 0.95)), 
+    linear-gradient(rgba(7, 8, 12, 0.55), rgba(7, 8, 12, 0.65)), 
     url('/campus-bg.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: fixed; /* Parallax effect on desktop */
   color: var(--text-primary);
   min-height: 100vh;
+  width: 100%;
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Optimize background scroll on mobile for visual performance */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
 .light-theme body {
   background-image: 
-    linear-gradient(rgba(248, 250, 252, 0.92), rgba(248, 250, 252, 0.96)), 
+    linear-gradient(rgba(248, 250, 252, 0.55), rgba(248, 250, 252, 0.65)), 
     url('/campus-bg.jpg');
 }
 
