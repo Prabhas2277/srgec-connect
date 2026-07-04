@@ -30,7 +30,7 @@ export const Login: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)] space-grid-bg px-4 relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-transparent space-grid-bg px-4 relative overflow-hidden">
       {/* Sci-Fi Glows */}
       <div className="bg-glow-purple top-[-200px] left-[-200px] pulse-glow"></div>
       <div className="bg-glow-cyan bottom-[-200px] right-[-200px] pulse-glow" style={{ animationDelay: '2.5s' }}></div>

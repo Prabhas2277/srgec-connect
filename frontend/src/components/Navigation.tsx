@@ -84,7 +84,7 @@ export const Navigation: React.FC<NavigationProps> = ({ children }) => {
   };
 
   return (
-    <div className="flex min-h-screen bg-[var(--bg-primary)] space-grid-bg transition-colors duration-300">
+    <div className="flex min-h-screen bg-transparent space-grid-bg transition-colors duration-300">
       {/* BACKGROUND SCI-FI GLOWS */}
       <div className="bg-glow-purple top-[-100px] left-[-100px] pulse-glow"></div>
       <div className="bg-glow-cyan bottom-[-100px] right-[-100px] pulse-glow" style={{ animationDelay: '2s' }}></div>
