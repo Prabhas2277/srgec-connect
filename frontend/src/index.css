@@ -4,16 +4,16 @@
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-family: var(--font-sans);
   
-  /* Color system - Dark Mode by default, but customizable */
-  --bg-primary: #07080c;
-  --bg-secondary: #0f111a;
-  --border-glow: rgba(139, 92, 246, 0.08);
+  /* High-Trust Modern Dark Mode Color System */
+  --bg-primary: #121826;      /* Main canvas background */
+  --bg-secondary: #1F2937;    /* Surface sidebars, navigation bars, and cards */
+  --border-glow: rgba(59, 130, 246, 0.08); /* High-trust blue glow */
   --border-glass: rgba(255, 255, 255, 0.06);
-  --text-primary: #f3f4f6;
-  --text-secondary: #9ca3af;
-  --accent-purple: #6366f1; /* Premium Indigo */
-  --accent-cyan: #06b6d4;
-  --glass-bg: rgba(15, 17, 28, 0.45);
+  --text-primary: #F3F4F6;    /* Crisp primary typography */
+  --text-secondary: #9CA3AF;  /* Description copy and link labels */
+  --accent-purple: #8B5CF6;   /* Specific achievement badges and coord accents */
+  --accent-cyan: #3B82F6;     /* Clickable items, buttons, active tabs (Blue) */
+  --glass-bg: rgba(31, 41, 55, 0.45);
   --glass-blur: blur(20px);
   --panel-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
 }
@@ -21,12 +21,12 @@
 .light-theme {
   --bg-primary: #f8fafc;
   --bg-secondary: #ffffff;
-  --border-glow: rgba(99, 102, 241, 0.05);
+  --border-glow: rgba(59, 130, 246, 0.05);
   --border-glass: rgba(15, 23, 42, 0.06);
   --text-primary: #0f172a;
   --text-secondary: #475569;
-  --accent-purple: #4f46e5;
-  --accent-cyan: #0891b2;
+  --accent-purple: #7c3aed;
+  --accent-cyan: #2563eb;
   --glass-bg: rgba(255, 255, 255, 0.65);
   --glass-blur: blur(20px);
   --panel-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.06);
@@ -36,7 +36,7 @@ body {
   margin: 0;
   background-color: var(--bg-primary);
   background-image: 
-    linear-gradient(rgba(7, 8, 12, 0.55), rgba(7, 8, 12, 0.65)), 
+    linear-gradient(rgba(18, 24, 38, 0.55), rgba(18, 24, 38, 0.65)), 
     url('/campus-bg.jpg');
   background-size: cover;
   background-position: center;
@@ -91,7 +91,7 @@ body {
 .glass-panel-interactive:hover {
   transform: translateY(-2px);
   border-color: rgba(255, 255, 255, 0.15);
-  background: rgba(28, 31, 48, 0.55);
+  background: rgba(31, 41, 55, 0.6);
 }
 
 .glass-input {
@@ -108,27 +108,27 @@ body {
 }
 
 .glass-input:focus {
-  border-color: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+  border-color: rgba(59, 130, 246, 0.35);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
   background: rgba(255, 255, 255, 0.04);
 }
 
 .glass-button {
-  background: var(--accent-purple);
+  background: var(--accent-cyan);
   color: white;
   border-radius: 8px;
   font-weight: 500;
   padding: 8px 20px;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 12px 0 rgba(99, 102, 241, 0.15);
+  box-shadow: 0 4px 12px 0 rgba(59, 130, 246, 0.15);
   cursor: pointer;
   border: none;
 }
 
 .glass-button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px 0 rgba(99, 102, 241, 0.25);
-  background: #4f46e5;
+  box-shadow: 0 6px 16px 0 rgba(59, 130, 246, 0.25);
+  background: #2563eb;
 }
 
 .glass-button-secondary {
@@ -153,7 +153,7 @@ body {
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.035) 0%, rgba(0,0,0,0) 70%);
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.035) 0%, rgba(0,0,0,0) 70%);
   filter: blur(80px);
   pointer-events: none;
   z-index: -1;
@@ -164,7 +164,7 @@ body {
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.025) 0%, rgba(0,0,0,0) 70%);
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.025) 0%, rgba(0,0,0,0) 70%);
   filter: blur(80px);
   pointer-events: none;
   z-index: -1;
@@ -216,7 +216,7 @@ body {
 
 /* VisionOS UI Premium Layouts */
 .glass-vision {
-  background: rgba(22, 25, 38, 0.55);
+  background: rgba(31, 41, 55, 0.55);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.07);
@@ -227,7 +227,7 @@ body {
 }
 
 .glass-vision-interactive {
-  background: rgba(22, 25, 38, 0.55);
+  background: rgba(31, 41, 55, 0.55);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.07);
@@ -241,7 +241,7 @@ body {
 .glass-vision-interactive:hover {
   transform: translateY(-3px);
   border-color: rgba(255, 255, 255, 0.15);
-  background: rgba(28, 31, 48, 0.65);
+  background: rgba(37, 49, 66, 0.65);
   box-shadow: 
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
     0 24px 48px rgba(0, 0, 0, 0.55);
@@ -280,20 +280,20 @@ body {
 }
 
 .face-top {
-  background: rgba(30, 41, 59, 0.85);
+  background: rgba(31, 41, 55, 0.85);
   transform: rotateX(0deg) translateZ(35px);
   box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.08);
 }
 
 .face-front {
-  background: rgba(15, 23, 42, 0.95);
+  background: rgba(17, 24, 39, 0.95);
   transform: rotateX(-90deg) translateZ(35px);
   height: 70px;
   transform-origin: bottom;
 }
 
 .face-right {
-  background: rgba(20, 28, 48, 0.95);
+  background: rgba(22, 28, 45, 0.95);
   transform: rotateY(90deg) translateZ(35px);
   width: 70px;
   transform-origin: right;
@@ -304,9 +304,9 @@ body {
 }
 
 .building-3d:hover .face-top {
-  background: var(--accent-purple);
+  background: var(--accent-cyan);
   box-shadow: 
-    0 0 20px rgba(99, 102, 241, 0.35),
+    0 0 20px rgba(59, 130, 246, 0.35),
     inset 0 0 8px rgba(255, 255, 255, 0.3);
 }
 
@@ -315,19 +315,19 @@ body {
   0%, 100% {
     transform: scale(1);
     box-shadow: 
-      0 0 20px rgba(99, 102, 241, 0.25),
+      0 0 20px rgba(59, 130, 246, 0.25),
       inset 0 0 10px rgba(255, 255, 255, 0.1);
   }
   50% {
     transform: scale(1.05);
     box-shadow: 
-      0 0 30px rgba(99, 102, 241, 0.4),
+      0 0 30px rgba(59, 130, 246, 0.4),
       inset 0 0 15px rgba(255, 255, 255, 0.2);
   }
 }
 
 .ai-orb-hologram {
-  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.15) 0%, rgba(99, 102, 241, 0.35) 45%, rgba(15, 17, 28, 0.8) 90%);
+  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.15) 0%, rgba(59, 130, 246, 0.35) 45%, rgba(31, 41, 55, 0.8) 90%);
   animation: aiBreathe 5s infinite ease-in-out;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -369,7 +369,7 @@ body {
 }
 
 .uiverse-loader::after {
-  border-color: var(--accent-purple);
+  border-color: var(--accent-cyan);
   animation: prixClipLoop 2s linear infinite, rotate 0.6s linear infinite reverse;
   inset: 6px;
 }
@@ -418,14 +418,14 @@ body {
 }
 
 .flip-card-front {
-  background: rgba(22, 25, 38, 0.55);
+  background: rgba(31, 41, 55, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.07);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
 .flip-card-back {
-  background: rgba(18, 20, 31, 0.95);
-  border: 1px solid rgba(99, 102, 241, 0.25);
+  background: rgba(18, 24, 38, 0.95);
+  border: 1px solid rgba(59, 130, 246, 0.25);
   transform: rotateY(180deg);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
 }
@@ -435,7 +435,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--accent-purple);
+  background: var(--accent-cyan);
   color: white;
   border-radius: 8px;
   padding: 8px 18px;
@@ -453,8 +453,8 @@ body {
 }
 
 .uiverse-btn-slide:hover {
-  background: #4f46e5;
-  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35);
+  background: #2563eb;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.35);
 }
 
 .uiverse-btn-slide:hover .arrow-icon {
@@ -524,13 +524,13 @@ body {
 }
 
 input:checked + .uiverse-slider {
-  background-color: rgba(99, 102, 241, 0.2);
-  border-color: rgba(99, 102, 241, 0.5);
+  background-color: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.5);
 }
 
 input:checked + .uiverse-slider:before {
   transform: translateX(22px);
-  background-color: #6366f1;
+  background-color: #3B82F6;
 }
 
 /* 5. Custom Checkbox */
@@ -564,12 +564,12 @@ input:checked + .uiverse-slider:before {
 
 .uiverse-checkbox-container:hover input ~ .uiverse-checkmark {
   background-color: rgba(255, 255, 255, 0.06);
-  border-color: rgba(99, 102, 241, 0.3);
+  border-color: rgba(59, 130, 246, 0.3);
 }
 
 .uiverse-checkbox-container input:checked ~ .uiverse-checkmark {
-  background-color: rgba(99, 102, 241, 0.2);
-  border-color: #6366f1;
+  background-color: rgba(59, 130, 246, 0.2);
+  border-color: #3B82F6;
 }
 
 .uiverse-checkmark:after {
@@ -587,7 +587,7 @@ input:checked + .uiverse-slider:before {
   top: 2px;
   width: 4px;
   height: 8px;
-  border: solid #6366f1;
+  border: solid #3B82F6;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
@@ -627,13 +627,13 @@ input:checked + .uiverse-slider:before {
 }
 
 .uiverse-radio-label:hover {
-  border-color: rgba(99, 102, 241, 0.3);
+  border-color: rgba(59, 130, 246, 0.3);
   background: rgba(255, 255, 255, 0.04);
 }
 
 .uiverse-radio-label input:checked + .uiverse-radio-circle {
-  border-color: #6366f1;
-  background-color: rgba(99, 102, 241, 0.1);
+  border-color: #3B82F6;
+  background-color: rgba(59, 130, 246, 0.1);
 }
 
 .uiverse-radio-label input:checked + .uiverse-radio-circle::after {
@@ -641,7 +641,7 @@ input:checked + .uiverse-slider:before {
   position: absolute;
   width: 6px;
   height: 6px;
-  background-color: #6366f1;
+  background-color: #3B82F6;
   border-radius: 50%;
   top: 50%;
   left: 50%;
@@ -649,8 +649,8 @@ input:checked + .uiverse-slider:before {
 }
 
 .uiverse-radio-label:has(input:checked) {
-  border-color: #6366f1;
-  background: rgba(99, 102, 241, 0.08);
+  border-color: #3B82F6;
+  background: rgba(59, 130, 246, 0.08);
   color: var(--text-primary);
 }
 
@@ -666,8 +666,8 @@ input:checked + .uiverse-slider:before {
   bottom: 125%;
   left: 50%;
   transform: translateX(-50%) translateY(5px);
-  background-color: rgba(15, 17, 28, 0.95);
-  border: 1px solid rgba(99, 102, 241, 0.3);
+  background-color: rgba(31, 41, 55, 0.95);
+  border: 1px solid rgba(59, 130, 246, 0.3);
   color: var(--text-primary);
   text-align: center;
   padding: 6px 10px;
@@ -689,7 +689,7 @@ input:checked + .uiverse-slider:before {
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: rgba(99, 102, 241, 0.3) transparent transparent transparent;
+  border-color: rgba(59, 130, 246, 0.3) transparent transparent transparent;
 }
 
 .uiverse-tooltip-container:hover .uiverse-tooltip {
@@ -700,6 +700,6 @@ input:checked + .uiverse-slider:before {
 
 /* 8. Custom Card Grid Background Pattern */
 .uiverse-card-pattern {
-  background-image: radial-gradient(rgba(99, 102, 241, 0.08) 1px, transparent 0);
+  background-image: radial-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 0);
   background-size: 8px 8px;
 }
