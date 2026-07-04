@@ -4,16 +4,16 @@
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-family: var(--font-sans);
   
-  /* High-Trust Modern Dark Mode Color System */
-  --bg-primary: #121826;      /* Main canvas background */
-  --bg-secondary: #1F2937;    /* Surface sidebars, navigation bars, and cards */
+  /* High-Trust Modern Dark Mode Color System - Institutional Slate Base */
+  --bg-primary: #020617;      /* Main canvas background */
+  --bg-secondary: #0F172A;    /* Surface sidebars, navigation bars, and cards */
   --border-glow: rgba(59, 130, 246, 0.08); /* High-trust blue glow */
-  --border-glass: rgba(255, 255, 255, 0.06);
+  --border-glass: #1E293B;    /* Sharp borders */
   --text-primary: #F3F4F6;    /* Crisp primary typography */
   --text-secondary: #9CA3AF;  /* Description copy and link labels */
   --accent-purple: #8B5CF6;   /* Specific achievement badges and coord accents */
   --accent-cyan: #3B82F6;     /* Clickable items, buttons, active tabs (Blue) */
-  --glass-bg: rgba(31, 41, 55, 0.45);
+  --glass-bg: rgba(15, 23, 42, 0.65);
   --glass-blur: blur(20px);
   --panel-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
 }
@@ -36,7 +36,7 @@ body {
   margin: 0;
   background-color: var(--bg-primary);
   background-image: 
-    linear-gradient(rgba(18, 24, 38, 0.55), rgba(18, 24, 38, 0.65)), 
+    linear-gradient(rgba(2, 6, 23, 0.55), rgba(2, 6, 23, 0.65)), 
     url('/campus-bg.jpg');
   background-size: cover;
   background-position: center;
@@ -90,12 +90,12 @@ body {
 
 .glass-panel-interactive:hover {
   transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.15);
-  background: rgba(31, 41, 55, 0.6);
+  border-color: rgba(59, 130, 246, 0.25);
+  background: rgba(15, 23, 42, 0.75);
 }
 
 .glass-input {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(2, 6, 23, 0.3);
   border: 1px solid var(--border-glass);
   border-radius: 8px;
   padding: 8px 14px;
@@ -110,7 +110,7 @@ body {
 .glass-input:focus {
   border-color: rgba(59, 130, 246, 0.35);
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(2, 6, 23, 0.5);
 }
 
 .glass-button {
@@ -216,23 +216,23 @@ body {
 
 /* VisionOS UI Premium Layouts */
 .glass-vision {
-  background: rgba(31, 41, 55, 0.55);
+  background: rgba(15, 23, 42, 0.65);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--border-glass);
   box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
     0 16px 40px rgba(0, 0, 0, 0.45);
   border-radius: 16px;
 }
 
 .glass-vision-interactive {
-  background: rgba(31, 41, 55, 0.55);
+  background: rgba(15, 23, 42, 0.65);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--border-glass);
   box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
     0 16px 40px rgba(0, 0, 0, 0.45);
   border-radius: 16px;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -240,10 +240,10 @@ body {
 
 .glass-vision-interactive:hover {
   transform: translateY(-3px);
-  border-color: rgba(255, 255, 255, 0.15);
-  background: rgba(37, 49, 66, 0.65);
+  border-color: rgba(59, 130, 246, 0.2);
+  background: rgba(30, 41, 59, 0.55);
   box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
     0 24px 48px rgba(0, 0, 0, 0.55);
 }
 
@@ -280,20 +280,20 @@ body {
 }
 
 .face-top {
-  background: rgba(31, 41, 55, 0.85);
+  background: rgba(30, 41, 59, 0.85);
   transform: rotateX(0deg) translateZ(35px);
   box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.08);
 }
 
 .face-front {
-  background: rgba(17, 24, 39, 0.95);
+  background: rgba(15, 23, 42, 0.95);
   transform: rotateX(-90deg) translateZ(35px);
   height: 70px;
   transform-origin: bottom;
 }
 
 .face-right {
-  background: rgba(22, 28, 45, 0.95);
+  background: rgba(20, 28, 48, 0.95);
   transform: rotateY(90deg) translateZ(35px);
   width: 70px;
   transform-origin: right;
@@ -327,7 +327,7 @@ body {
 }
 
 .ai-orb-hologram {
-  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.15) 0%, rgba(59, 130, 246, 0.35) 45%, rgba(31, 41, 55, 0.8) 90%);
+  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.15) 0%, rgba(59, 130, 246, 0.35) 45%, rgba(15, 23, 42, 0.8) 90%);
   animation: aiBreathe 5s infinite ease-in-out;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -418,13 +418,13 @@ body {
 }
 
 .flip-card-front {
-  background: rgba(31, 41, 55, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid var(--border-glass);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
 .flip-card-back {
-  background: rgba(18, 24, 38, 0.95);
+  background: rgba(30, 41, 59, 0.95);
   border: 1px solid rgba(59, 130, 246, 0.25);
   transform: rotateY(180deg);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
@@ -506,7 +506,7 @@ body {
   right: 0;
   bottom: 0;
   background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-glass);
   transition: .3s cubic-bezier(0.16, 1, 0.3, 1);
   border-radius: 34px;
 }
@@ -556,7 +556,7 @@ input:checked + .uiverse-slider:before {
   height: 18px;
   width: 18px;
   background-color: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-glass);
   border-radius: 6px;
   margin-right: 8px;
   transition: all 0.2s ease;
@@ -606,7 +606,7 @@ input:checked + .uiverse-slider:before {
   font-size: 12px;
   color: var(--text-secondary);
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-glass);
   padding: 6px 12px;
   border-radius: 8px;
   transition: all 0.2s ease;
@@ -666,7 +666,7 @@ input:checked + .uiverse-slider:before {
   bottom: 125%;
   left: 50%;
   transform: translateX(-50%) translateY(5px);
-  background-color: rgba(31, 41, 55, 0.95);
+  background-color: rgba(15, 23, 42, 0.95);
   border: 1px solid rgba(59, 130, 246, 0.3);
   color: var(--text-primary);
   text-align: center;

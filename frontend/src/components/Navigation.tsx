@@ -92,15 +92,17 @@ export const Navigation: React.FC<NavigationProps> = ({ children }) => {
       {/* SIDEBAR */}
       <aside className="w-68 glass-vision fixed inset-y-4 left-4 z-20 flex flex-col p-4 m-0 overflow-y-auto">
         <div className="flex items-center gap-3 px-2 py-4 border-b border-[var(--border-glass)]">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-violet-600 to-cyan-500 flex items-center justify-center font-bold text-white text-xl shadow-lg">
-            S
+          {/* Institutional Gold/Navy Logo Placeholder */}
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-950 to-blue-800 border border-[#F59E0B] flex items-center justify-center font-bold text-[#F59E0B] text-base shadow-lg relative overflow-hidden flex-shrink-0">
+            SRG
+            <div className="absolute inset-0 bg-[#F59E0B]/5 animate-pulse pointer-events-none"></div>
           </div>
-          <div>
-            <h1 className="text-lg font-bold tracking-tight text-[var(--text-primary)] m-0 leading-none">
+          <div className="text-left">
+            <h1 className="text-sm font-black tracking-tight text-[var(--text-primary)] m-0 leading-none">
               SRGEC Connect
             </h1>
-            <span className="text-[10px] text-violet-400 font-semibold tracking-widest uppercase">
-              Digital Campus
+            <span className="text-[9px] text-[#F59E0B] font-bold tracking-wider uppercase mt-1 block">
+              GUDLAVALLERU
             </span>
           </div>
         </div>
@@ -140,7 +142,7 @@ export const Navigation: React.FC<NavigationProps> = ({ children }) => {
                 to={item.path}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
                   isActive
-                    ? 'bg-gradient-to-r from-violet-600/30 to-cyan-500/10 border-l-2 border-violet-500 text-[var(--text-primary)]'
+                    ? 'bg-blue-600 text-white shadow-md shadow-blue-900/30 font-semibold'
                     : 'text-[var(--text-secondary)] hover:bg-white/5 hover:text-[var(--text-primary)]'
                 }`}
               >
