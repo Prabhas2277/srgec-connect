@@ -323,3 +323,362 @@ body {
   box-shadow: 
     0 16px 40px rgba(0, 0, 0, 0.5);
 }
+
+/* ==========================================================================
+   NEW CUSTOM UI/UX COMPONENTS FROM UIVERSE.IO SHOWCASE
+   ========================================================================== */
+
+/* 1. Custom Orbital Loader */
+.uiverse-loader {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1.2s linear infinite;
+}
+
+.uiverse-loader::before, .uiverse-loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  border: 3.5px solid rgba(255, 255, 255, 0.1);
+  animation: prixClipLoop 2s linear infinite;
+}
+
+.uiverse-loader::after {
+  border-color: var(--accent-purple);
+  animation: prixClipLoop 2s linear infinite, rotate 0.6s linear infinite reverse;
+  inset: 6px;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes prixClipLoop {
+  0% { clip-path: polygon(50% 50%,0 0,0 0,0 0,0 0,0 0); }
+  25% { clip-path: polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0); }
+  50% { clip-path: polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%); }
+  75% { clip-path: polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%); }
+  100% { clip-path: polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0); }
+}
+
+/* 2. Custom 3D Flip Card */
+.flip-card {
+  perspective: 1000px;
+  background-color: transparent;
+  min-height: 230px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.flip-card-front {
+  background: rgba(22, 25, 38, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.flip-card-back {
+  background: rgba(18, 20, 31, 0.95);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  transform: rotateY(180deg);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* 3. Custom Hover Slide Button */
+.uiverse-btn-slide {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-purple);
+  color: white;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-weight: 500;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+}
+
+.uiverse-btn-slide .arrow-icon {
+  transform: translateX(0);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.uiverse-btn-slide:hover {
+  background: #4f46e5;
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35);
+}
+
+.uiverse-btn-slide:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+/* Glow-overlay effect button */
+.uiverse-btn-glow {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.uiverse-btn-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+  transition: all 0.6s ease;
+  z-index: -1;
+}
+
+.uiverse-btn-glow:hover::before {
+  left: 100%;
+}
+
+/* 4. Custom Switch Toggle */
+.uiverse-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 22px;
+}
+
+.uiverse-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.uiverse-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: .3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 34px;
+}
+
+.uiverse-slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #9ca3af;
+  transition: .3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 50%;
+}
+
+input:checked + .uiverse-slider {
+  background-color: rgba(99, 102, 241, 0.2);
+  border-color: rgba(99, 102, 241, 0.5);
+}
+
+input:checked + .uiverse-slider:before {
+  transform: translateX(22px);
+  background-color: #6366f1;
+}
+
+/* 5. Custom Checkbox */
+.uiverse-checkbox-container {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.uiverse-checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.uiverse-checkmark {
+  position: relative;
+  height: 18px;
+  width: 18px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  margin-right: 8px;
+  transition: all 0.2s ease;
+}
+
+.uiverse-checkbox-container:hover input ~ .uiverse-checkmark {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.uiverse-checkbox-container input:checked ~ .uiverse-checkmark {
+  background-color: rgba(99, 102, 241, 0.2);
+  border-color: #6366f1;
+}
+
+.uiverse-checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.uiverse-checkbox-container input:checked ~ .uiverse-checkmark:after {
+  display: block;
+}
+
+.uiverse-checkbox-container .uiverse-checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid #6366f1;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* 6. Custom Radio Buttons */
+.uiverse-radio-group {
+  display: flex;
+  gap: 8px;
+}
+
+.uiverse-radio-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-size: 12px;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.uiverse-radio-label input {
+  display: none;
+}
+
+.uiverse-radio-circle {
+  height: 12px;
+  width: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  margin-right: 8px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.uiverse-radio-label:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.uiverse-radio-label input:checked + .uiverse-radio-circle {
+  border-color: #6366f1;
+  background-color: rgba(99, 102, 241, 0.1);
+}
+
+.uiverse-radio-label input:checked + .uiverse-radio-circle::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: #6366f1;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.uiverse-radio-label:has(input:checked) {
+  border-color: #6366f1;
+  background: rgba(99, 102, 241, 0.08);
+  color: var(--text-primary);
+}
+
+/* 7. Custom Tooltip Container */
+.uiverse-tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.uiverse-tooltip {
+  visibility: hidden;
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%) translateY(5px);
+  background-color: rgba(15, 17, 28, 0.95);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: var(--text-primary);
+  text-align: center;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 10px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 100;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  pointer-events: none;
+}
+
+.uiverse-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(99, 102, 241, 0.3) transparent transparent transparent;
+}
+
+.uiverse-tooltip-container:hover .uiverse-tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* 8. Custom Card Grid Background Pattern */
+.uiverse-card-pattern {
+  background-image: radial-gradient(rgba(99, 102, 241, 0.08) 1px, transparent 0);
+  background-size: 8px 8px;
+}
