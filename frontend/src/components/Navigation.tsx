@@ -84,7 +84,7 @@ export const Navigation: React.FC<NavigationProps> = ({ children }) => {
   };
 
   return (
-    <div className="flex min-h-screen bg-[var(--bg-primary)] transition-colors duration-300">
+    <div className="flex min-h-screen bg-transparent transition-colors duration-300">
       {/* SIDEBAR */}
       <aside className="w-64 border-r border-[var(--border-glass)] bg-[var(--bg-secondary)] fixed inset-y-0 left-0 z-20 flex flex-col p-5 m-0">
         <div className="flex items-center gap-3 px-1 py-4 border-b border-[var(--border-glass)] mb-4">
