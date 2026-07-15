@@ -84,18 +84,13 @@ export const Navigation: React.FC<NavigationProps> = ({ children }) => {
   };
 
   return (
-    <div className="flex min-h-screen bg-transparent space-grid-bg transition-colors duration-300">
-      {/* BACKGROUND SCI-FI GLOWS */}
-      <div className="bg-glow-purple top-[-100px] left-[-100px] pulse-glow"></div>
-      <div className="bg-glow-cyan bottom-[-100px] right-[-100px] pulse-glow" style={{ animationDelay: '2s' }}></div>
-
+    <div className="flex min-h-screen bg-[var(--bg-primary)] transition-colors duration-300">
       {/* SIDEBAR */}
-      <aside className="w-68 glass-vision fixed inset-y-4 left-4 z-20 flex flex-col p-4 m-0 overflow-y-auto">
-        <div className="flex items-center gap-3 px-2 py-4 border-b border-[var(--border-glass)]">
+      <aside className="w-64 border-r border-[var(--border-glass)] bg-[var(--bg-secondary)] fixed inset-y-0 left-0 z-20 flex flex-col p-5 m-0">
+        <div className="flex items-center gap-3 px-1 py-4 border-b border-[var(--border-glass)] mb-4">
           {/* Institutional Gold/Navy Logo Placeholder */}
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-950 to-blue-800 border border-[#F59E0B] flex items-center justify-center font-bold text-[#F59E0B] text-base shadow-lg relative overflow-hidden flex-shrink-0">
+          <div className="w-10 h-10 rounded-lg bg-[#0F172A] border border-[#F59E0B] flex items-center justify-center font-bold text-[#F59E0B] text-xs shadow-sm relative overflow-hidden flex-shrink-0">
             SRG
-            <div className="absolute inset-0 bg-[#F59E0B]/5 animate-pulse pointer-events-none"></div>
           </div>
           <div className="text-left">
             <h1 className="text-sm font-black tracking-tight text-[var(--text-primary)] m-0 leading-none">
@@ -108,26 +103,26 @@ export const Navigation: React.FC<NavigationProps> = ({ children }) => {
         </div>
 
         {/* GAMIFIED USER STATUS CARD */}
-        <div className="mt-4 p-3 bg-violet-950/20 border border-violet-500/20 rounded-xl">
+        <div className="p-3.5 bg-white border border-[var(--border-glass)] rounded-xl shadow-sm">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Trophy className="w-4 h-4 text-amber-400" />
-              <span className="text-xs font-semibold text-[var(--text-primary)]">
+            <div className="flex items-center gap-1.5">
+              <Trophy className="w-4 h-4 text-amber-500" />
+              <span className="text-xs font-bold text-[var(--text-primary)]">
                 Level {user.level}
               </span>
             </div>
-            <span className="text-[10px] text-[var(--text-secondary)]">
+            <span className="text-[10px] font-bold text-[var(--text-secondary)]">
               {user.xp} XP
             </span>
           </div>
-          <div className="w-full h-2 bg-slate-800 rounded-full mt-2 overflow-hidden">
+          <div className="w-full h-1.5 bg-slate-100 rounded-full mt-2 overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-violet-500 to-cyan-400 transition-all duration-500"
+              className="h-full bg-gradient-to-r from-blue-500 to-[#F59E0B] transition-all duration-500"
               style={{ width: `${xpPercent}%` }}
             ></div>
           </div>
-          <div className="text-[9px] text-violet-300 mt-1.5 text-center font-medium">
-            {200 - currentLevelXP} XP remaining for Level {user.level + 1}
+          <div className="text-[9px] text-[var(--text-secondary)] mt-1.5 text-center font-medium">
+            {200 - currentLevelXP} XP to Level {user.level + 1}
           </div>
         </div>
 
@@ -140,13 +135,13 @@ export const Navigation: React.FC<NavigationProps> = ({ children }) => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 ${
                   isActive
-                    ? 'bg-blue-600 text-white shadow-md shadow-blue-900/30 font-semibold'
-                    : 'text-[var(--text-secondary)] hover:bg-white/5 hover:text-[var(--text-primary)]'
+                    ? 'bg-[var(--accent-cream)] text-[var(--text-primary)] font-bold border-l-2 border-slate-700 shadow-sm'
+                    : 'text-[var(--text-secondary)] hover:bg-white hover:text-[var(--text-primary)]'
                 }`}
               >
-                <Icon className={`w-4 h-4 ${isActive ? 'text-violet-400' : ''}`} />
+                <Icon className={`w-4 h-4 ${isActive ? 'text-slate-800' : 'text-slate-500'}`} />
                 {item.name}
               </Link>
             );
@@ -157,24 +152,24 @@ export const Navigation: React.FC<NavigationProps> = ({ children }) => {
         <div className="border-t border-[var(--border-glass)] pt-4 space-y-2">
           <Link
             to="/profile"
-            className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-[var(--text-secondary)] hover:bg-white/5 hover:text-[var(--text-primary)] transition-all"
+            className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-[var(--text-secondary)] hover:bg-white hover:text-[var(--text-primary)] transition-all"
           >
             {user.profile_photo_url ? (
               <img
                 src={user.profile_photo_url}
                 alt="profile"
-                className="w-7 h-7 rounded-full object-cover border border-violet-500/30"
+                className="w-7 h-7 rounded-full object-cover border border-[#E5E7EB]"
               />
             ) : (
-              <div className="w-7 h-7 rounded-full bg-slate-800 flex items-center justify-center border border-violet-500/30">
-                <UserIcon className="w-3.5 h-3.5" />
+              <div className="w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center border border-[#E5E7EB]">
+                <UserIcon className="w-3.5 h-3.5 text-slate-500" />
               </div>
             )}
             <div className="text-left leading-none">
               <div className="text-xs font-semibold text-[var(--text-primary)] truncate max-w-28">
                 {user.full_name}
               </div>
-              <span className="text-[9px] text-violet-400 capitalize">
+              <span className="text-[9px] text-[var(--text-secondary)] capitalize">
                 {user.role.replace('_', ' ')}
               </span>
             </div>
@@ -182,7 +177,7 @@ export const Navigation: React.FC<NavigationProps> = ({ children }) => {
 
           <button
             onClick={logout}
-            className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-red-400 hover:bg-red-500/10 transition-all cursor-pointer"
+            className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-red-500 hover:bg-red-50/50 transition-all cursor-pointer border-none bg-transparent"
           >
             <LogOut className="w-4 h-4" />
             Logout
@@ -191,9 +186,9 @@ export const Navigation: React.FC<NavigationProps> = ({ children }) => {
       </aside>
 
       {/* MAIN CONTAINER */}
-      <div className="flex-1 flex flex-col pl-76 pr-4 py-4 min-h-screen">
+      <div className="flex-1 flex flex-col pl-72 pr-8 py-6 min-h-screen">
         {/* TOPBAR */}
-        <header className="glass-vision flex items-center justify-between px-6 py-3 mb-4">
+        <header className="bg-white border border-[var(--border-glass)] rounded-xl flex items-center justify-between px-6 py-4 shadow-sm mb-6">
           <div className="text-left">
             <span className="text-xs text-[var(--text-secondary)]">Welcome back,</span>
             <h2 className="text-base font-bold text-[var(--text-primary)] m-0 leading-tight">
@@ -201,27 +196,27 @@ export const Navigation: React.FC<NavigationProps> = ({ children }) => {
             </h2>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             {/* NOTIFICATIONS DROPDOWN */}
             <div className="relative">
               <button
                 onClick={() => setShowNotifications(!showNotifications)}
-                className="p-2 bg-white/5 border border-[var(--border-glass)] rounded-lg hover:bg-white/10 transition-all text-[var(--text-primary)] cursor-pointer relative"
+                className="p-2 bg-white border border-[var(--border-glass)] rounded-lg hover:bg-slate-50 transition-all text-[var(--text-primary)] cursor-pointer relative"
               >
-                <Bell className="w-4 h-4" />
+                <Bell className="w-4 h-4 text-slate-600" />
                 {notifications.length > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-rose-500 rounded-full animate-pulse"></span>
+                  <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full animate-pulse"></span>
                 )}
               </button>
 
               {showNotifications && (
-                <div className="absolute right-0 mt-2 w-80 glass-vision p-4 z-40 text-left space-y-3">
+                <div className="absolute right-0 mt-2 w-80 bg-white border border-[var(--border-glass)] rounded-xl p-4 z-40 shadow-lg text-left space-y-3">
                   <div className="flex justify-between items-center border-b border-[var(--border-glass)] pb-2">
                     <span className="text-xs font-bold text-[var(--text-primary)]">Notifications</span>
                     <Link
                       to="/notices"
                       onClick={() => setShowNotifications(false)}
-                      className="text-[10px] text-violet-400 hover:underline font-semibold"
+                      className="text-[10px] text-blue-600 hover:underline font-semibold"
                     >
                       View All Notices
                     </Link>
@@ -232,16 +227,16 @@ export const Navigation: React.FC<NavigationProps> = ({ children }) => {
                       <p className="text-[10px] text-[var(--text-secondary)] text-center py-4">No new notifications.</p>
                     ) : (
                       notifications.slice(0, 4).map((n) => {
-                        const { icon: Icon, color, bg } = getNotifMeta(n.type);
+                        const { icon: Icon, color } = getNotifMeta(n.type);
                         const targetPath = n.type === 'notice' ? '/notices' : n.type === 'placement' ? '/placements' : n.type === 'event' ? '/events' : '/notices';
                         return (
                           <Link
                             key={n.id}
                             to={targetPath}
                             onClick={() => setShowNotifications(false)}
-                            className="flex gap-2.5 p-2 bg-white/2 hover:bg-white/5 border border-white/5 rounded-xl transition-all cursor-pointer"
+                            className="flex gap-2.5 p-2 bg-[#FAFAF8] hover:bg-[#F8F3E7]/40 border border-[#E5E7EB] rounded-lg transition-all cursor-pointer"
                           >
-                            <div className={`w-7 h-7 rounded-lg ${bg} flex items-center justify-center flex-shrink-0 mt-0.5`}>
+                            <div className="w-7 h-7 rounded-lg bg-white border border-[#E5E7EB] flex items-center justify-center flex-shrink-0 mt-0.5">
                               <Icon className={`w-3.5 h-3.5 ${color}`} />
                             </div>
                             <div className="text-left min-w-0 flex-1">
@@ -271,15 +266,15 @@ export const Navigation: React.FC<NavigationProps> = ({ children }) => {
 
             <button
               onClick={toggleTheme}
-              className="p-2 bg-white/5 border border-[var(--border-glass)] rounded-lg hover:bg-white/10 transition-all text-[var(--text-primary)] cursor-pointer"
+              className="p-2 bg-white border border-[var(--border-glass)] rounded-lg hover:bg-slate-50 transition-all text-[var(--text-primary)] cursor-pointer"
             >
-              {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              {theme === 'dark' ? <Sun className="w-4 h-4 text-slate-600" /> : <Moon className="w-4 h-4 text-slate-600" />}
             </button>
-            <div className="flex flex-col text-right">
+            <div className="flex flex-col text-right leading-none">
               <span className="text-xs font-semibold text-[var(--text-primary)]">
                 {user.roll_number || 'Faculty ID'}
               </span>
-              <span className="text-[9px] text-[var(--text-secondary)]">
+              <span className="text-[9px] text-[var(--text-secondary)] mt-1">
                 {user.department || 'SRGEC'} Dept
               </span>
             </div>

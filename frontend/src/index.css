@@ -4,492 +4,186 @@
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-family: var(--font-sans);
   
-  /* High-Trust Modern Dark Mode Color System - Institutional Slate Base */
-  --bg-primary: #020617;      /* Main canvas background */
-  --bg-secondary: #0F172A;    /* Surface sidebars, navigation bars, and cards */
-  --border-glow: rgba(59, 130, 246, 0.08); /* High-trust blue glow */
-  --border-glass: #1E293B;    /* Sharp borders */
-  --text-primary: #F3F4F6;    /* Crisp primary typography */
-  --text-secondary: #9CA3AF;  /* Description copy and link labels */
-  --accent-purple: #8B5CF6;   /* Specific achievement badges and coord accents */
-  --accent-cyan: #3B82F6;     /* Clickable items, buttons, active tabs (Blue) */
-  --glass-bg: rgba(15, 23, 42, 0.65);
-  --glass-blur: blur(20px);
-  --panel-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+  /* Minimal White & Cream Theme Color System */
+  --bg-primary: #FFFFFF;      /* Main canvas background */
+  --bg-secondary: #FAFAF8;    /* Soft Off-White for sidebars, headers, and panels */
+  --border-glass: #E5E7EB;    /* Very light gray for clean borders */
+  --text-primary: #1F2937;    /* Dark gray for robust readable text */
+  --text-secondary: #6B7280;  /* Gray for descriptions and labels */
+  --accent-cream: #F8F3E7;    /* Highlighted sections, cards, and primary buttons */
+  --accent-cream-hover: #EAE3D2; /* Slightly darker cream for hover states */
+  --accent-cyan: #3B82F6;     /* Subtle action blue for active indicators */
+  --glass-bg: #FFFFFF;
+  --glass-blur: none;
+  --panel-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
 }
 
 .light-theme {
-  --bg-primary: #f8fafc;
-  --bg-secondary: #ffffff;
-  --border-glow: rgba(59, 130, 246, 0.05);
-  --border-glass: rgba(15, 23, 42, 0.06);
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --accent-purple: #7c3aed;
-  --accent-cyan: #2563eb;
-  --glass-bg: rgba(255, 255, 255, 0.65);
-  --glass-blur: blur(20px);
-  --panel-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.06);
+  /* Keep cohesive in light mode triggers */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #FAFAF8;
+  --border-glass: #E5E7EB;
+  --text-primary: #1F2937;
+  --text-secondary: #6B7280;
+  --accent-cream: #F8F3E7;
+  --accent-cream-hover: #EAE3D2;
+  --accent-cyan: #3B82F6;
+  --glass-bg: #FFFFFF;
+  --glass-blur: none;
+  --panel-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
 }
 
 body {
   margin: 0;
   background-color: var(--bg-primary);
-  background-image: 
-    linear-gradient(rgba(2, 6, 23, 0.55), rgba(2, 6, 23, 0.65)), 
-    url('/campus-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* Parallax effect on desktop */
+  background-image: none; /* Removed background images for minimal flat design */
   color: var(--text-primary);
   min-height: 100vh;
   width: 100%;
   overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Optimize background scroll on mobile for visual performance */
-@media (max-width: 768px) {
-  body {
-    background-attachment: scroll;
-  }
-}
-
-.light-theme body {
-  background-image: 
-    linear-gradient(rgba(248, 250, 252, 0.55), rgba(248, 250, 252, 0.65)), 
-    url('/campus-bg.jpg');
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 #root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: var(--bg-primary);
 }
 
-/* Glassmorphism Classes */
+/* Flat Minimal Panels instead of Glassmorphism */
 .glass-panel {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  background: var(--bg-primary);
   border: 1px solid var(--border-glass);
   box-shadow: var(--panel-shadow);
   border-radius: 12px;
 }
 
 .glass-panel-interactive {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  background: var(--bg-primary);
   border: 1px solid var(--border-glass);
   box-shadow: var(--panel-shadow);
   border-radius: 12px;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.2s ease-in-out;
 }
 
 .glass-panel-interactive:hover {
-  transform: translateY(-2px);
-  border-color: rgba(59, 130, 246, 0.25);
-  background: rgba(15, 23, 42, 0.75);
+  border-color: #D1D5DB;
+  background: var(--bg-secondary);
 }
 
 .glass-input {
-  background: rgba(2, 6, 23, 0.3);
+  background: var(--bg-primary);
   border: 1px solid var(--border-glass);
   border-radius: 8px;
-  padding: 8px 14px;
+  padding: 10px 14px;
   color: var(--text-primary);
   outline: none;
-  transition: all 0.2s ease;
-}
-.light-theme .glass-input {
-  background: rgba(15, 23, 42, 0.02);
+  font-size: 14px;
+  transition: all 0.15s ease;
 }
 
 .glass-input:focus {
-  border-color: rgba(59, 130, 246, 0.35);
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
-  background: rgba(2, 6, 23, 0.5);
+  border-color: #9CA3AF;
+  box-shadow: 0 0 0 1px #9CA3AF;
 }
 
+/* Redesigned flat buttons */
 .glass-button {
-  background: var(--accent-cyan);
-  color: white;
+  background: var(--accent-cream);
+  color: var(--text-primary);
+  border: 1px solid #E5E7EB;
   border-radius: 8px;
-  font-weight: 500;
-  padding: 8px 20px;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 12px 0 rgba(59, 130, 246, 0.15);
+  font-weight: 600;
+  padding: 10px 20px;
+  font-size: 14px;
+  transition: all 0.15s ease;
   cursor: pointer;
-  border: none;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
 .glass-button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px 0 rgba(59, 130, 246, 0.25);
-  background: #2563eb;
+  background: var(--accent-cream-hover);
+  border-color: #D1D5DB;
 }
 
 .glass-button-secondary {
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--bg-primary);
   border: 1px solid var(--border-glass);
   color: var(--text-primary);
   border-radius: 8px;
   font-weight: 500;
-  padding: 8px 20px;
-  transition: all 0.2s ease;
+  padding: 10px 20px;
+  font-size: 14px;
+  transition: all 0.15s ease;
   cursor: pointer;
 }
 
 .glass-button-secondary:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.15);
-}
-
-/* Background Glow elements - Extremely subtle to prevent saturation */
-.bg-glow-purple {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.035) 0%, rgba(0,0,0,0) 70%);
-  filter: blur(80px);
-  pointer-events: none;
-  z-index: -1;
-}
-
-.bg-glow-cyan {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.025) 0%, rgba(0,0,0,0) 70%);
-  filter: blur(80px);
-  pointer-events: none;
-  z-index: -1;
+  background: var(--bg-secondary);
+  border-color: #D1D5DB;
 }
 
 /* Scrollbar Customization */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: var(--bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.08);
+  background: #E5E7EB;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: #D1D5DB;
 }
 
-/* Premium Dot Pattern Background */
-.space-grid-bg {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-.light-theme .space-grid-bg {
-  background-image: radial-gradient(rgba(15, 23, 42, 0.05) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-/* Animations */
-@keyframes pulseGlow {
-  0%, 100% {
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 0.6;
-  }
-}
-
-.pulse-glow {
-  animation: pulseGlow 4s infinite ease-in-out;
-}
-
-/* VisionOS UI Premium Layouts */
+/* Flat layouts instead of VisionOS */
 .glass-vision {
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: var(--bg-primary);
   border: 1px solid var(--border-glass);
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.03),
-    0 16px 40px rgba(0, 0, 0, 0.45);
-  border-radius: 16px;
+  box-shadow: var(--panel-shadow);
+  border-radius: 14px;
 }
 
 .glass-vision-interactive {
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: var(--bg-primary);
   border: 1px solid var(--border-glass);
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.03),
-    0 16px 40px rgba(0, 0, 0, 0.45);
-  border-radius: 16px;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--panel-shadow);
+  border-radius: 14px;
+  transition: all 0.2s ease;
 }
 
 .glass-vision-interactive:hover {
-  transform: translateY(-3px);
-  border-color: rgba(59, 130, 246, 0.2);
-  background: rgba(30, 41, 59, 0.55);
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 24px 48px rgba(0, 0, 0, 0.55);
+  border-color: #D1D5DB;
+  background: var(--bg-secondary);
 }
 
-/* 3D Isometric Campus mesh projection */
-.scene-3d {
-  perspective: 1200px;
-  transform-style: preserve-3d;
-  overflow: hidden;
-}
-
-.map-mesh-3d {
-  transform-style: preserve-3d;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
-}
-
-.building-3d {
-  position: relative;
-  width: 70px;
-  height: 70px;
-  transform-style: preserve-3d;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: pointer;
-}
-
-/* 3D Cube Faces for Spatial Buildings */
-.face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 4px;
-}
-
-.face-top {
-  background: rgba(30, 41, 59, 0.85);
-  transform: rotateX(0deg) translateZ(35px);
-  box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.08);
-}
-
-.face-front {
-  background: rgba(15, 23, 42, 0.95);
-  transform: rotateX(-90deg) translateZ(35px);
-  height: 70px;
-  transform-origin: bottom;
-}
-
-.face-right {
-  background: rgba(20, 28, 48, 0.95);
-  transform: rotateY(90deg) translateZ(35px);
-  width: 70px;
-  transform-origin: right;
-}
-
-.building-3d:hover {
-  transform: translateZ(12px);
-}
-
-.building-3d:hover .face-top {
-  background: var(--accent-cyan);
-  box-shadow: 
-    0 0 20px rgba(59, 130, 246, 0.35),
-    inset 0 0 8px rgba(255, 255, 255, 0.3);
-}
-
-/* Breathing Hologram Orb for AI Assistant */
-@keyframes aiBreathe {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 
-      0 0 20px rgba(59, 130, 246, 0.25),
-      inset 0 0 10px rgba(255, 255, 255, 0.1);
-  }
-  50% {
-    transform: scale(1.05);
-    box-shadow: 
-      0 0 30px rgba(59, 130, 246, 0.4),
-      inset 0 0 15px rgba(255, 255, 255, 0.2);
-  }
-}
-
-.ai-orb-hologram {
-  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.15) 0%, rgba(59, 130, 246, 0.35) 45%, rgba(15, 23, 42, 0.8) 90%);
-  animation: aiBreathe 5s infinite ease-in-out;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-/* Bento grid dynamic card shadows */
-.bento-card-active {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.bento-card-active:hover {
-  transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 
-    0 16px 40px rgba(0, 0, 0, 0.5);
-}
-
-/* ==========================================================================
-   NEW CUSTOM UI/UX COMPONENTS FROM UIVERSE.IO SHOWCASE
-   ========================================================================== */
-
-/* 1. Custom Orbital Loader */
+/* Simple outline loader instead of dual-ring */
 .uiverse-loader {
-  width: 54px;
-  height: 54px;
+  width: 32px;
+  height: 32px;
+  border: 2px solid #E5E7EB;
+  border-top-color: #9CA3AF;
   border-radius: 50%;
-  position: relative;
-  animation: rotate 1.2s linear infinite;
+  animation: spin 0.8s linear infinite;
 }
 
-.uiverse-loader::before, .uiverse-loader::after {
-  content: "";
-  box-sizing: border-box;
-  position: absolute;
-  inset: 0px;
-  border-radius: 50%;
-  border: 3.5px solid rgba(255, 255, 255, 0.1);
-  animation: prixClipLoop 2s linear infinite;
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
-.uiverse-loader::after {
-  border-color: var(--accent-cyan);
-  animation: prixClipLoop 2s linear infinite, rotate 0.6s linear infinite reverse;
-  inset: 6px;
-}
-
-@keyframes rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes prixClipLoop {
-  0% { clip-path: polygon(50% 50%,0 0,0 0,0 0,0 0,0 0); }
-  25% { clip-path: polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0); }
-  50% { clip-path: polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%); }
-  75% { clip-path: polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%); }
-  100% { clip-path: polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0); }
-}
-
-/* 2. Custom 3D Flip Card */
-.flip-card {
-  perspective: 1000px;
-  background-color: transparent;
-  min-height: 230px;
-}
-
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: left;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  transform-style: preserve-3d;
-}
-
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-.flip-card-front {
-  background: rgba(15, 23, 42, 0.65);
-  border: 1px solid var(--border-glass);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-}
-
-.flip-card-back {
-  background: rgba(30, 41, 59, 0.95);
-  border: 1px solid rgba(59, 130, 246, 0.25);
-  transform: rotateY(180deg);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-}
-
-/* 3. Custom Hover Slide Button */
-.uiverse-btn-slide {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--accent-cyan);
-  color: white;
-  border-radius: 8px;
-  padding: 8px 18px;
-  font-weight: 500;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  border: none;
-}
-
-.uiverse-btn-slide .arrow-icon {
-  transform: translateX(0);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.uiverse-btn-slide:hover {
-  background: #2563eb;
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.35);
-}
-
-.uiverse-btn-slide:hover .arrow-icon {
-  transform: translateX(4px);
-}
-
-/* Glow-overlay effect button */
-.uiverse-btn-glow {
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.uiverse-btn-glow::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
-  transition: all 0.6s ease;
-  z-index: -1;
-}
-
-.uiverse-btn-glow:hover::before {
-  left: 100%;
-}
-
-/* 4. Custom Switch Toggle */
+/* Flat toggle switch */
 .uiverse-switch {
   position: relative;
   display: inline-block;
-  width: 44px;
-  height: 22px;
+  width: 40px;
+  height: 20px;
 }
 
 .uiverse-switch input {
@@ -505,9 +199,8 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-glass);
-  transition: .3s cubic-bezier(0.16, 1, 0.3, 1);
+  background-color: #E5E7EB;
+  transition: .2s ease;
   border-radius: 34px;
 }
 
@@ -518,29 +211,27 @@ body {
   width: 14px;
   left: 3px;
   bottom: 3px;
-  background-color: #9ca3af;
-  transition: .3s cubic-bezier(0.16, 1, 0.3, 1);
+  background-color: #FFFFFF;
+  transition: .2s ease;
   border-radius: 50%;
 }
 
 input:checked + .uiverse-slider {
-  background-color: rgba(59, 130, 246, 0.2);
-  border-color: rgba(59, 130, 246, 0.5);
+  background-color: #9CA3AF;
 }
 
 input:checked + .uiverse-slider:before {
-  transform: translateX(22px);
-  background-color: #3B82F6;
+  transform: translateX(20px);
 }
 
-/* 5. Custom Checkbox */
+/* Minimal Checkbox */
 .uiverse-checkbox-container {
   display: inline-flex;
   align-items: center;
   cursor: pointer;
   user-select: none;
   font-size: 13px;
-  color: var(--text-secondary);
+  color: var(--text-primary);
 }
 
 .uiverse-checkbox-container input {
@@ -553,23 +244,22 @@ input:checked + .uiverse-slider:before {
 
 .uiverse-checkmark {
   position: relative;
-  height: 18px;
-  width: 18px;
-  background-color: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-glass);
-  border-radius: 6px;
+  height: 16px;
+  width: 16px;
+  background-color: #FFFFFF;
+  border: 1px solid #D1D5DB;
+  border-radius: 4px;
   margin-right: 8px;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
 }
 
 .uiverse-checkbox-container:hover input ~ .uiverse-checkmark {
-  background-color: rgba(255, 255, 255, 0.06);
-  border-color: rgba(59, 130, 246, 0.3);
+  border-color: #9CA3AF;
 }
 
 .uiverse-checkbox-container input:checked ~ .uiverse-checkmark {
-  background-color: rgba(59, 130, 246, 0.2);
-  border-color: #3B82F6;
+  background-color: #1F2937;
+  border-color: #1F2937;
 }
 
 .uiverse-checkmark:after {
@@ -583,16 +273,16 @@ input:checked + .uiverse-slider:before {
 }
 
 .uiverse-checkbox-container .uiverse-checkmark:after {
-  left: 6px;
+  left: 5px;
   top: 2px;
   width: 4px;
-  height: 8px;
-  border: solid #3B82F6;
+  height: 7px;
+  border: solid #FFFFFF;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
 
-/* 6. Custom Radio Buttons */
+/* Minimal Radio */
 .uiverse-radio-group {
   display: flex;
   gap: 8px;
@@ -603,13 +293,13 @@ input:checked + .uiverse-slider:before {
   align-items: center;
   cursor: pointer;
   user-select: none;
-  font-size: 12px;
-  color: var(--text-secondary);
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--border-glass);
+  font-size: 13px;
+  color: var(--text-primary);
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
   padding: 6px 12px;
-  border-radius: 8px;
-  transition: all 0.2s ease;
+  border-radius: 6px;
+  transition: all 0.15s ease;
 }
 
 .uiverse-radio-label input {
@@ -619,21 +309,20 @@ input:checked + .uiverse-slider:before {
 .uiverse-radio-circle {
   height: 12px;
   width: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid #D1D5DB;
   border-radius: 50%;
   margin-right: 8px;
   position: relative;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
 }
 
 .uiverse-radio-label:hover {
-  border-color: rgba(59, 130, 246, 0.3);
-  background: rgba(255, 255, 255, 0.04);
+  border-color: #9CA3AF;
 }
 
 .uiverse-radio-label input:checked + .uiverse-radio-circle {
-  border-color: #3B82F6;
-  background-color: rgba(59, 130, 246, 0.1);
+  border-color: #1F2937;
+  background-color: #FFFFFF;
 }
 
 .uiverse-radio-label input:checked + .uiverse-radio-circle::after {
@@ -641,7 +330,7 @@ input:checked + .uiverse-slider:before {
   position: absolute;
   width: 6px;
   height: 6px;
-  background-color: #3B82F6;
+  background-color: #1F2937;
   border-radius: 50%;
   top: 50%;
   left: 50%;
@@ -649,12 +338,11 @@ input:checked + .uiverse-slider:before {
 }
 
 .uiverse-radio-label:has(input:checked) {
-  border-color: #3B82F6;
-  background: rgba(59, 130, 246, 0.08);
-  color: var(--text-primary);
+  border-color: #1F2937;
+  background: var(--bg-secondary);
 }
 
-/* 7. Custom Tooltip Container */
+/* Minimal outline tooltip */
 .uiverse-tooltip-container {
   position: relative;
   display: inline-block;
@@ -665,31 +353,18 @@ input:checked + .uiverse-slider:before {
   position: absolute;
   bottom: 125%;
   left: 50%;
-  transform: translateX(-50%) translateY(5px);
-  background-color: rgba(15, 23, 42, 0.95);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  color: var(--text-primary);
+  transform: translateX(-50%) translateY(3px);
+  background-color: #1F2937;
+  color: #FFFFFF;
   text-align: center;
-  padding: 6px 10px;
-  border-radius: 6px;
-  font-size: 10px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
   white-space: nowrap;
   opacity: 0;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.15s ease, transform 0.15s ease;
   z-index: 100;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
   pointer-events: none;
-}
-
-.uiverse-tooltip::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: rgba(59, 130, 246, 0.3) transparent transparent transparent;
 }
 
 .uiverse-tooltip-container:hover .uiverse-tooltip {
@@ -698,8 +373,42 @@ input:checked + .uiverse-slider:before {
   transform: translateX(-50%) translateY(0);
 }
 
-/* 8. Custom Card Grid Background Pattern */
-.uiverse-card-pattern {
-  background-image: radial-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 0);
-  background-size: 8px 8px;
+/* Removed all 3D scene elements, glowing mesh overlays, grids, and backgrounds */
+.scene-3d, .map-mesh-3d, .building-3d, .face, .face-top, .face-front, .face-right,
+.bg-glow-purple, .bg-glow-cyan, .ai-orb-hologram, .space-grid-bg, .uiverse-card-pattern {
+  display: none !important;
+  background: none !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  animation: none !important;
+}
+
+/* Clean, modern slide button override */
+.uiverse-btn-slide {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-cream);
+  color: var(--text-primary);
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.uiverse-btn-slide:hover {
+  background: var(--accent-cream-hover);
+  border-color: #D1D5DB;
+}
+
+.uiverse-btn-slide .arrow-icon {
+  transform: translateX(0);
+  transition: transform 0.15s ease;
+}
+
+.uiverse-btn-slide:hover .arrow-icon {
+  transform: translateX(3px);
 }

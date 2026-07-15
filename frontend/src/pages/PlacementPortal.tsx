@@ -203,21 +203,20 @@ export const PlacementPortal: React.FC = () => {
   return (
     <div className="space-y-8 text-left">
       {/* INSTITUTIONAL BRANDING HEADER */}
-      <div className="relative overflow-hidden rounded-2xl border border-[#1E293B] bg-[#0F172A] p-6 shadow-2xl">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-blue-900/10 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+      <div className="relative overflow-hidden rounded-2xl border border-[var(--border-glass)] bg-white p-6 shadow-sm">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
           <div className="flex items-center gap-4">
             {/* SRGEC Crest Emblem Placeholder */}
-            <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-950 to-blue-900 border border-[#F59E0B] flex flex-col items-center justify-center text-[#F59E0B] shadow-inner relative flex-shrink-0">
+            <div className="w-16 h-16 rounded-xl bg-[#0F172A] border border-[#F59E0B] flex flex-col items-center justify-center text-[#F59E0B] shadow-sm relative flex-shrink-0">
               <span className="text-xs font-black tracking-widest text-[#F59E0B]">SRGEC</span>
               <span className="text-[7px] font-bold text-slate-300">ESTD 1998</span>
               <div className="absolute inset-x-0 bottom-0 h-1 bg-[#F59E0B]"></div>
             </div>
             <div>
               <span className="text-[9px] text-[#F59E0B] font-extrabold tracking-widest uppercase">Placement Cell</span>
-              <h2 className="text-2xl font-black tracking-tight text-[#F3F4F6] mt-0.5">Seshadri Rao Gudlavalleru Engineering College</h2>
-              <p className="text-xs text-[#9CA3AF] mt-1 max-w-xl">
-                SRGEC Campus Recruitment ecosystem. Real-time criteria matching, ATS audit scanner, and vendor listings.
+              <h2 className="text-xl font-black tracking-tight text-[var(--text-primary)] mt-0.5">Seshadri Rao Gudlavalleru Engineering College</h2>
+              <p className="text-xs text-[var(--text-secondary)] mt-1 max-w-xl">
+                SRGEC Campus Recruitment ecosystem. Real-time criteria matching, ATS audit checker, and company drives.
               </p>
             </div>
           </div>
@@ -239,9 +238,9 @@ export const PlacementPortal: React.FC = () => {
 
       {/* CREATE PLACEMENT FORM PANEL */}
       {showCreate && (
-        <div className="glass-vision p-6 border-blue-500/20">
-          <h3 className="text-base font-bold text-[#F3F4F6] mb-4 flex items-center gap-2">
-            <Plus className="w-5 h-5 text-[#3B82F6]" />
+        <div className="rounded-xl border border-[var(--border-glass)] bg-white p-6 shadow-sm">
+          <h3 className="text-base font-bold text-[var(--text-primary)] mb-4 flex items-center gap-2">
+            <Plus className="w-5 h-5 text-slate-700" />
             Host Placement Drive listing (Faculty receives +30 XP)
           </h3>
 
@@ -255,7 +254,7 @@ export const PlacementPortal: React.FC = () => {
           <form onSubmit={handleCreateSubmit} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-[#9CA3AF] uppercase mb-1.5">Company Name</label>
+                <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase mb-1.5">Company Name</label>
                 <input
                   type="text"
                   placeholder="e.g. Cognizant / TCS"
@@ -267,7 +266,7 @@ export const PlacementPortal: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#9CA3AF] uppercase mb-1.5">Job Role / Position</label>
+                <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase mb-1.5">Job Role / Position</label>
                 <input
                   type="text"
                   placeholder="e.g. Programmer Analyst Trainee"
@@ -281,16 +280,16 @@ export const PlacementPortal: React.FC = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-[#9CA3AF] uppercase mb-1.5">Drive Type</label>
+                <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase mb-1.5">Drive Type</label>
                 <select value={jobType} onChange={(e) => setJobType(e.target.value)} className="w-full glass-input px-3 py-2.5 text-sm">
-                  <option value="Full Time" className="bg-[#0F172A]">Full Time</option>
-                  <option value="Internship" className="bg-[#0F172A]">Internship</option>
-                  <option value="Contract" className="bg-[#0F172A]">Contract</option>
+                  <option value="Full Time" className="bg-white">Full Time</option>
+                  <option value="Internship" className="bg-white">Internship</option>
+                  <option value="Contract" className="bg-white">Contract</option>
                 </select>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#9CA3AF] uppercase mb-1.5">Package Details</label>
+                <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase mb-1.5">Package Details</label>
                 <input
                   type="text"
                   placeholder="e.g. 4.5 LPA / 80,000 pm"
@@ -302,7 +301,7 @@ export const PlacementPortal: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#9CA3AF] uppercase mb-1.5">Deadline Date</label>
+                <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase mb-1.5">Deadline Date</label>
                 <input
                   type="date"
                   value={deadlineVal}
@@ -315,7 +314,7 @@ export const PlacementPortal: React.FC = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-[#9CA3AF] uppercase mb-1.5">Min CGPA</label>
+                <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase mb-1.5">Min CGPA</label>
                 <input
                   type="number"
                   step="0.01"
@@ -328,7 +327,7 @@ export const PlacementPortal: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#9CA3AF] uppercase mb-1.5">Max Backlogs Allowed</label>
+                <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase mb-1.5">Max Backlogs Allowed</label>
                 <input
                   type="number"
                   placeholder="e.g. 0"
@@ -340,7 +339,7 @@ export const PlacementPortal: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#9CA3AF] uppercase mb-1.5">Eligible Branches (comma list)</label>
+                <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase mb-1.5">Eligible Branches (comma list)</label>
                 <input
                   type="text"
                   placeholder="e.g. CSE, IT, ECE"
@@ -369,16 +368,16 @@ export const PlacementPortal: React.FC = () => {
       )}
 
       {createSuccess && (
-        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-emerald-400 text-xs flex items-center gap-2">
+        <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-emerald-600 text-xs flex items-center gap-2">
           <CheckCircle className="w-4.5 h-4.5" />
           {createSuccess}
         </div>
       )}
 
-      {/* PLACEMENT CARDS GRID (MULTI-COLUMN GRID LAYOUT) */}
+      {/* PLACEMENT CARDS GRID */}
       <div className="space-y-4">
-        <h3 className="font-extrabold text-lg text-[#F3F4F6] flex items-center gap-2">
-          <Briefcase className="w-5 h-5 text-[#3B82F6]" />
+        <h3 className="font-extrabold text-lg text-[var(--text-primary)] flex items-center gap-2">
+          <Briefcase className="w-5 h-5 text-slate-700" />
           Active Placement Drives
         </h3>
         
@@ -389,21 +388,21 @@ export const PlacementPortal: React.FC = () => {
             return (
               <div
                 key={job.id}
-                className="flex flex-col justify-between rounded-xl border border-[#1E293B] bg-[#0F172A] p-5 shadow-lg transition-all duration-300 hover:border-slate-700 hover:translate-y-[-2px] relative overflow-hidden"
+                className="flex flex-col justify-between rounded-xl border border-[var(--border-glass)] bg-white p-5 shadow-sm hover:border-slate-400 hover:bg-[#FAFAF8]/50 transition-all duration-200 relative overflow-hidden"
               >
-                {/* Eligibility Tag Pill in Top-Right */}
+                {/* Eligibility Tag Pill */}
                 <div className="absolute top-4 right-4">
                   {eligibility.eligible ? (
-                    <span className="inline-flex items-center gap-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 px-2.5 py-0.5 rounded-full text-[10px] font-bold">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                    <span className="inline-flex items-center gap-1 bg-emerald-50 border border-emerald-100 text-emerald-600 px-2.5 py-0.5 rounded-full text-[10px] font-bold">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                       Eligible
                     </span>
                   ) : (
                     <span
-                      className="inline-flex items-center gap-1 bg-rose-500/10 border border-rose-500/30 text-rose-400 px-2.5 py-0.5 rounded-full text-[10px] font-bold"
+                      className="inline-flex items-center gap-1 bg-rose-50 border border-rose-100 text-rose-600 px-2.5 py-0.5 rounded-full text-[10px] font-bold"
                       title={eligibility.reason}
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-rose-400"></span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
                       Ineligible
                     </span>
                   )}
@@ -412,28 +411,28 @@ export const PlacementPortal: React.FC = () => {
                 <div className="space-y-3">
                   <div>
                     <span className="text-[10px] font-bold text-[#F59E0B] uppercase tracking-wider">{job.type}</span>
-                    <h4 className="text-lg font-black text-[#F3F4F6] mt-0.5 leading-snug">{job.company}</h4>
-                    <p className="text-xs text-[#9CA3AF] font-medium mt-0.5">{job.role}</p>
+                    <h4 className="text-lg font-black text-[var(--text-primary)] mt-0.5 leading-snug">{job.company}</h4>
+                    <p className="text-xs text-[var(--text-secondary)] font-medium mt-0.5">{job.role}</p>
                   </div>
 
                   {/* Salary Centerpiece Badge */}
-                  <div className="bg-[#020617] border border-[#1E293B] rounded-lg p-2.5 text-center mt-2">
-                    <span className="text-[9px] uppercase tracking-wider text-[#9CA3AF] font-bold block mb-0.5">Offered Package</span>
-                    <span className="text-sm font-extrabold text-emerald-400 font-mono tracking-wide">{job.package}</span>
+                  <div className="bg-[#FAFAF8] border border-[var(--border-glass)] rounded-lg p-2.5 text-center mt-2">
+                    <span className="text-[9px] uppercase tracking-wider text-[var(--text-secondary)] font-bold block mb-0.5">Offered Package</span>
+                    <span className="text-sm font-extrabold text-emerald-600 font-mono tracking-wide">{job.package}</span>
                   </div>
 
-                  <div className="border-t border-[#1E293B] pt-3 mt-3 space-y-2 text-xs">
-                    <div className="flex justify-between items-center text-[#9CA3AF]">
-                      <span className="flex items-center gap-1"><GraduationCap className="w-3.5 h-3.5 text-blue-400" /> Min CGPA:</span>
-                      <span className="font-bold text-[#F3F4F6]">{job.min_cgpa}</span>
+                  <div className="border-t border-[var(--border-glass)] pt-3 mt-3 space-y-2 text-xs">
+                    <div className="flex justify-between items-center text-[var(--text-secondary)]">
+                      <span className="flex items-center gap-1"><GraduationCap className="w-3.5 h-3.5 text-slate-500" /> Min CGPA:</span>
+                      <span className="font-bold text-[var(--text-primary)]">{job.min_cgpa}</span>
                     </div>
-                    <div className="flex justify-between items-center text-[#9CA3AF]">
-                      <span className="flex items-center gap-1"><Layers className="w-3.5 h-3.5 text-purple-400" /> Max Backlogs:</span>
-                      <span className="font-bold text-[#F3F4F6]">{job.max_backlogs}</span>
+                    <div className="flex justify-between items-center text-[var(--text-secondary)]">
+                      <span className="flex items-center gap-1"><Layers className="w-3.5 h-3.5 text-slate-500" /> Max Backlogs:</span>
+                      <span className="font-bold text-[var(--text-primary)]">{job.max_backlogs}</span>
                     </div>
-                    <div className="flex flex-col gap-1 text-[#9CA3AF] pt-1">
+                    <div className="flex flex-col gap-1 text-[var(--text-secondary)] pt-1">
                       <span className="text-[10px] font-bold uppercase tracking-wider">Eligible Departments:</span>
-                      <span className="font-semibold text-xs text-slate-300 bg-[#020617] px-2 py-1 rounded border border-[#1E293B] truncate">
+                      <span className="font-semibold text-xs text-[var(--text-primary)] bg-white px-2 py-1 rounded border border-[var(--border-glass)] truncate">
                         {(() => {
                           try {
                             const arr = typeof job.eligible_branches === 'string' ? JSON.parse(job.eligible_branches) : job.eligible_branches;
@@ -447,18 +446,16 @@ export const PlacementPortal: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Ineligibility Reason Callout */}
-                <div className="mt-4 pt-3 border-t border-[#1E293B] flex items-center justify-between gap-2">
+                <div className="mt-4 pt-3 border-t border-[var(--border-glass)] flex items-center justify-between gap-2">
                   <div className="flex items-center gap-1.5">
-                    {/* Urgency Signal Capsule */}
-                    <div className="bg-red-950/20 border border-red-500/20 text-red-400 px-2 py-0.5 rounded-md text-[9px] font-bold flex items-center gap-1">
-                      <Calendar className="w-3 h-3 text-red-400" />
+                    <div className="bg-rose-550/10 bg-rose-50 border border-rose-100 text-rose-600 px-2 py-0.5 rounded-md text-[9px] font-bold flex items-center gap-1">
+                      <Calendar className="w-3.5 h-3.5 text-rose-500" />
                       Apply By: {job.deadline}
                     </div>
                   </div>
 
                   {!eligibility.eligible && (
-                    <span className="text-[9px] text-rose-400/80 font-bold max-w-32 truncate text-right">
+                    <span className="text-[9px] text-rose-600 font-bold max-w-32 truncate text-right">
                       {eligibility.reason}
                     </span>
                   )}
@@ -471,19 +468,19 @@ export const PlacementPortal: React.FC = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-4">
         {/* ELIGIBILITY CHECKER FORM */}
-        <div className="rounded-xl border border-[#1E293B] bg-[#0F172A] p-6 shadow-xl space-y-4">
-          <h3 className="text-base font-bold text-[#F3F4F6] flex items-center gap-2">
-            <ShieldCheck className="w-5 h-5 text-[#3B82F6]" />
+        <div className="rounded-xl border border-[var(--border-glass)] bg-white p-6 shadow-sm space-y-4">
+          <h3 className="text-base font-bold text-[var(--text-primary)] flex items-center gap-2">
+            <ShieldCheck className="w-5 h-5 text-slate-700" />
             Company Eligibility Checker
           </h3>
-          <p className="text-xs text-[#9CA3AF]">
+          <p className="text-xs text-[var(--text-secondary)]">
             Adjust your academic specifications below to dynamically evaluate your eligibility status against all active drives above.
           </p>
 
           <form onSubmit={handleCheckEligibility} className="space-y-4 pt-2">
             {/* Dropdown with Horizontal Alignment */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-              <label className="text-xs font-semibold text-[#9CA3AF] uppercase tracking-wider min-w-28 whitespace-nowrap">
+              <label className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider min-w-28 whitespace-nowrap">
                 Selected Drive:
               </label>
               <select
@@ -492,7 +489,7 @@ export const PlacementPortal: React.FC = () => {
                 className="w-full glass-input px-3 py-2.5 text-sm"
               >
                 {jobs.map((job) => (
-                  <option key={job.id} value={job.id} className="bg-[#0F172A]">
+                  <option key={job.id} value={job.id} className="bg-white">
                     {job.company} - {job.role}
                   </option>
                 ))}
@@ -501,7 +498,7 @@ export const PlacementPortal: React.FC = () => {
 
             {/* Inputs with Horizontal Vectors & Proportional Padding */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-              <label className="text-xs font-semibold text-[#9CA3AF] uppercase tracking-wider min-w-28 whitespace-nowrap">
+              <label className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider min-w-28 whitespace-nowrap">
                 Your CGPA:
               </label>
               <input
@@ -516,7 +513,7 @@ export const PlacementPortal: React.FC = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-              <label className="text-xs font-semibold text-[#9CA3AF] uppercase tracking-wider min-w-28 whitespace-nowrap">
+              <label className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider min-w-28 whitespace-nowrap">
                 Active Backlogs:
               </label>
               <input
@@ -530,7 +527,7 @@ export const PlacementPortal: React.FC = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-              <label className="text-xs font-semibold text-[#9CA3AF] uppercase tracking-wider min-w-28 whitespace-nowrap">
+              <label className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider min-w-28 whitespace-nowrap">
                 Your Branch:
               </label>
               <select
@@ -538,21 +535,20 @@ export const PlacementPortal: React.FC = () => {
                 onChange={(e) => setStudentBranch(e.target.value)}
                 className="w-full glass-input px-3 py-2.5 text-sm"
               >
-                <option value="CSE" className="bg-[#0F172A]">CSE</option>
-                <option value="IT" className="bg-[#0F172A]">IT</option>
-                <option value="ECE" className="bg-[#0F172A]">ECE</option>
-                <option value="EEE" className="bg-[#0F172A]">EEE</option>
-                <option value="ME" className="bg-[#0F172A]">ME</option>
-                <option value="CE" className="bg-[#0F172A]">CE</option>
+                <option value="CSE" className="bg-white">CSE</option>
+                <option value="IT" className="bg-white">IT</option>
+                <option value="ECE" className="bg-white">ECE</option>
+                <option value="EEE" className="bg-white">EEE</option>
+                <option value="ME" className="bg-white">ME</option>
+                <option value="CE" className="bg-white">CE</option>
               </select>
             </div>
 
             <div className="pt-2">
-              {/* Royal Blue fill CTA */}
               <button
                 type="submit"
                 disabled={checkingEligibility}
-                className="w-full bg-[#3B82F6] hover:bg-blue-700 text-white rounded-lg font-bold text-sm py-3 transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-md shadow-blue-500/10 border-none"
+                className="w-full bg-[#1F2937] hover:bg-black text-white rounded-lg font-bold text-sm py-3 transition-all duration-150 flex items-center justify-center gap-2 cursor-pointer shadow-sm border-none"
               >
                 {checkingEligibility ? <RefreshCw className="w-4 h-4 animate-spin" /> : 'Evaluate Specific Eligibility'}
               </button>
@@ -561,21 +557,21 @@ export const PlacementPortal: React.FC = () => {
 
           {/* Checker Result Widget */}
           {eligibilityResult && (
-            <div className="mt-4 pt-4 border-t border-[#1E293B]">
+            <div className="mt-4 pt-4 border-t border-[var(--border-glass)]">
               {eligibilityResult.eligible ? (
-                <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-xl flex items-start gap-3 text-emerald-400">
+                <div className="p-4 bg-emerald-50 border border-emerald-100 rounded-xl flex items-start gap-3 text-emerald-600">
                   <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
                   <div>
                     <h4 className="font-extrabold text-sm">Congratulations! You are eligible.</h4>
-                    <p className="text-xs text-emerald-300/80 mt-1">You satisfy the company's placement criteria. Ready for application.</p>
+                    <p className="text-xs text-emerald-700/80 mt-1">You satisfy the company's placement criteria. Ready for application.</p>
                   </div>
                 </div>
               ) : (
-                <div className="p-4 bg-rose-500/10 border border-rose-500/30 rounded-xl flex items-start gap-3 text-rose-400">
+                <div className="p-4 bg-rose-50 border border-rose-100 rounded-xl flex items-start gap-3 text-rose-600">
                   <XCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
                   <div>
                     <h4 className="font-extrabold text-sm">Criteria Match Failed.</h4>
-                    <ul className="list-disc list-inside text-xs text-rose-300/80 mt-1.5 space-y-0.5">
+                    <ul className="list-disc list-inside text-xs text-rose-700/80 mt-1.5 space-y-0.5">
                       {eligibilityResult.reasons.map((r: string, idx: number) => (
                         <li key={idx}>{r}</li>
                       ))}
@@ -587,19 +583,19 @@ export const PlacementPortal: React.FC = () => {
           )}
         </div>
 
-        {/* AI CAREER COACH & ATS ANALYZER (Glassmorphism with Blue Glow Border) */}
-        <div className="rounded-xl border border-blue-500/30 bg-gradient-to-tr from-[#0F172A] via-[#1E293B]/20 to-transparent p-6 shadow-2xl shadow-blue-500/5 space-y-4">
+        {/* AI CAREER COACH & ATS ANALYZER */}
+        <div className="rounded-xl border border-[var(--border-glass)] bg-white p-6 shadow-sm space-y-4">
           <div className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-lg bg-[#3B82F6]/10 flex items-center justify-center border border-blue-500/20">
-              <Cpu className="w-5 h-5 text-[#3B82F6]" />
+            <div className="w-9 h-9 rounded-lg bg-[#FAFAF8] flex items-center justify-center border border-[var(--border-glass)]">
+              <Cpu className="w-5 h-5 text-slate-700" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-[#F3F4F6] leading-tight">AI Career Coach & ATS Analyzer</h3>
-              <span className="text-[10px] text-blue-400 font-bold uppercase tracking-wider">Dynamic Resume Scan</span>
+              <h3 className="text-base font-bold text-[var(--text-primary)] leading-tight">AI Career Coach & ATS Analyzer</h3>
+              <span className="text-[10px] text-slate-600 font-bold uppercase tracking-wider">Dynamic Resume Scan</span>
             </div>
           </div>
-          <p className="text-xs text-[#9CA3AF] leading-relaxed">
-            Audit your qualifications against typical corporate requirements. Paste your resume details (experience, tools, certifications) to receive an instant ATS score and learning checklist.
+          <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+            Audit your qualifications against typical corporate requirements. Paste your resume details (experience, tools, certifications) to receive an instant ATS score and learning roadmap.
           </p>
 
           <form onSubmit={handleAnalyzeResume} className="space-y-4 pt-1">
@@ -607,14 +603,14 @@ export const PlacementPortal: React.FC = () => {
               placeholder="Paste resume content here (e.g., programming languages, core projects, academic history)..."
               value={resumeText}
               onChange={(e) => setResumeText(e.target.value)}
-              className="w-full glass-input min-h-36 resize-none text-xs leading-relaxed bg-[#020617]/50 focus:border-blue-500/50"
+              className="w-full glass-input min-h-36 resize-none text-xs leading-relaxed bg-white border-[var(--border-glass)] focus:border-slate-400"
               required
             />
 
             <button
               type="submit"
               disabled={analyzingResume || !resumeText.trim()}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold text-sm py-2.5 transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer border-none shadow-md"
+              className="w-full bg-[#1F2937] hover:bg-black text-white rounded-lg font-bold text-sm py-2.5 transition-all duration-150 flex items-center justify-center gap-2 cursor-pointer border-none shadow-sm"
             >
               {analyzingResume ? (
                 <>
@@ -628,43 +624,43 @@ export const PlacementPortal: React.FC = () => {
           </form>
 
           {analysisResult && (
-            <div className="mt-4 pt-4 border-t border-[#1E293B] space-y-4">
+            <div className="mt-4 pt-4 border-t border-[var(--border-glass)] space-y-4">
               {/* ATS Score widget */}
-              <div className="flex flex-col sm:flex-row items-center gap-4 p-3 bg-[#020617] border border-[#1E293B] rounded-xl">
+              <div className="flex flex-col sm:flex-row items-center gap-4 p-3 bg-[#FAFAF8] border border-[var(--border-glass)] rounded-xl">
                 <div className="relative w-16 h-16 flex items-center justify-center flex-shrink-0">
                   <svg className="w-full h-full transform -rotate-90">
-                    <circle cx="32" cy="32" r="26" stroke="rgba(255,255,255,0.03)" strokeWidth="5" fill="transparent" />
-                    <circle cx="32" cy="32" r="26" stroke="#3B82F6" strokeWidth="5" fill="transparent"
+                     <circle cx="32" cy="32" r="26" stroke="#E5E7EB" strokeWidth="5" fill="transparent" />
+                     <circle cx="32" cy="32" r="26" stroke="#1F2937" strokeWidth="5" fill="transparent"
                       strokeDasharray={163.3}
                       strokeDashoffset={163.3 - (163.3 * analysisResult.ats_score) / 100}
-                    />
+                     />
                   </svg>
-                  <span className="absolute text-xs font-black text-[#F3F4F6]">{analysisResult.ats_score}%</span>
+                  <span className="absolute text-xs font-black text-[var(--text-primary)]">{analysisResult.ats_score}%</span>
                 </div>
                 <div className="text-left">
-                  <h4 className="text-xs font-bold text-[#F3F4F6]">ATS Fit Score</h4>
-                  <p className="text-[10px] text-[#9CA3AF] mt-0.5">Resume elements check out. Complete the recommended actions to optimize keyword counts.</p>
+                  <h4 className="text-xs font-bold text-[var(--text-primary)]">ATS Fit Score</h4>
+                  <p className="text-[10px] text-[var(--text-secondary)] mt-0.5">Resume elements check out. Complete the recommended actions to optimize keyword counts.</p>
                 </div>
               </div>
 
               {/* Strengths / Weaknesses */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div className="p-3 bg-emerald-500/5 border border-emerald-500/10 rounded-lg">
-                  <h5 className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest mb-1.5">Key Strengths</h5>
+                <div className="p-3 bg-emerald-50 border border-emerald-100 rounded-lg">
+                  <h5 className="text-[10px] font-bold text-emerald-700 uppercase tracking-widest mb-1.5">Key Strengths</h5>
                   <ul className="space-y-1">
                     {analysisResult.strengths.slice(0, 3).map((str: string, i: number) => (
-                      <li key={i} className="text-[10px] text-[#9CA3AF] leading-snug">
+                      <li key={i} className="text-[10px] text-[var(--text-secondary)] leading-snug">
                         ✓ {str}
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="p-3 bg-amber-500/5 border border-amber-500/10 rounded-lg">
-                  <h5 className="text-[10px] font-bold text-amber-400 uppercase tracking-widest mb-1.5">Improvement Steps</h5>
+                <div className="p-3 bg-amber-50 border border-amber-100 rounded-lg">
+                  <h5 className="text-[10px] font-bold text-amber-700 uppercase tracking-widest mb-1.5">Improvement Steps</h5>
                   <ul className="space-y-1">
                     {analysisResult.improvements.slice(0, 3).map((imp: string, i: number) => (
-                      <li key={i} className="text-[10px] text-[#9CA3AF] leading-snug">
+                      <li key={i} className="text-[10px] text-[var(--text-secondary)] leading-snug">
                         • {imp}
                       </li>
                     ))}
@@ -673,17 +669,17 @@ export const PlacementPortal: React.FC = () => {
               </div>
 
               {/* Roadmap timeline */}
-              <div className="bg-[#020617]/80 border border-[#1E293B] rounded-lg p-3">
-                <h5 className="text-xs font-bold text-blue-400 flex items-center gap-1.5 mb-2">
-                  <TrendingUp className="w-3.5 h-3.5" />
+              <div className="bg-[#FAFAF8] border border-[var(--border-glass)] rounded-lg p-3">
+                <h5 className="text-xs font-bold text-slate-700 flex items-center gap-1.5 mb-2">
+                  <TrendingUp className="w-3.5 h-3.5 text-slate-600" />
                   Tailored Learning Roadmap
                 </h5>
-                <div className="space-y-3 relative pl-4 border-l border-blue-500/20">
+                <div className="space-y-3 relative pl-4 border-l border-slate-350">
                   {analysisResult.roadmap.slice(0, 3).map((step: string, idx: number) => (
                     <div key={idx} className="relative text-xs">
-                      <div className="absolute -left-[21px] top-0.5 w-2.5 h-2.5 rounded-full bg-blue-500 border border-[#020617]"></div>
-                      <span className="font-extrabold text-[10px] text-slate-400">Step {idx + 1}</span>
-                      <p className="text-[#9CA3AF] mt-0.5 leading-normal text-[11px]">{step}</p>
+                      <div className="absolute -left-[21px] top-0.5 w-2.5 h-2.5 rounded-full bg-slate-750 bg-slate-600 border border-white"></div>
+                      <span className="font-extrabold text-[10px] text-[var(--text-secondary)]">Step {idx + 1}</span>
+                      <p className="text-[var(--text-secondary)] mt-0.5 leading-normal text-[11px]">{step}</p>
                     </div>
                   ))}
                 </div>
