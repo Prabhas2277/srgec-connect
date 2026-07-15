@@ -58,7 +58,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: var(--bg-primary);
+  background-color: transparent;
 }
 
 /* Flat Minimal Panels instead of Glassmorphism */
