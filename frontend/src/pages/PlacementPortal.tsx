@@ -448,7 +448,7 @@ export const PlacementPortal: React.FC = () => {
 
                 <div className="mt-4 pt-3 border-t border-[var(--border-glass)] flex items-center justify-between gap-2">
                   <div className="flex items-center gap-1.5">
-                    <div className="bg-rose-550/10 bg-rose-50 border border-rose-100 text-rose-600 px-2 py-0.5 rounded-md text-[9px] font-bold flex items-center gap-1">
+                    <div className="bg-rose-50 border border-rose-100 text-rose-600 px-2 py-0.5 rounded-md text-[9px] font-bold flex items-center gap-1">
                       <Calendar className="w-3.5 h-3.5 text-rose-500" />
                       Apply By: {job.deadline}
                     </div>
@@ -677,7 +677,7 @@ export const PlacementPortal: React.FC = () => {
                 <div className="space-y-3 relative pl-4 border-l border-slate-350">
                   {analysisResult.roadmap.slice(0, 3).map((step: string, idx: number) => (
                     <div key={idx} className="relative text-xs">
-                      <div className="absolute -left-[21px] top-0.5 w-2.5 h-2.5 rounded-full bg-slate-750 bg-slate-600 border border-white"></div>
+                      <div className="absolute -left-[21px] top-0.5 w-2.5 h-2.5 rounded-full bg-slate-600 border border-white"></div>
                       <span className="font-extrabold text-[10px] text-[var(--text-secondary)]">Step {idx + 1}</span>
                       <p className="text-[var(--text-secondary)] mt-0.5 leading-normal text-[11px]">{step}</p>
                     </div>

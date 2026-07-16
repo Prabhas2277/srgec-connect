@@ -447,7 +447,7 @@ export const Dashboard: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         
         {/* WIDGET 1: LARGE HERO - AI ASSISTANT PANEL */}
-        <div className="md:col-span-2 rounded-xl border border-[var(--border-glass)] bg-white p-6 flex flex-col sm:flex-row items-center gap-6 justify-between shadow-sm">
+        <div className="md:col-span-2 rounded-xl border border-[var(--border-glass)] bg-white p-6 flex flex-col sm:flex-row items-center gap-6 justify-between shadow-sm min-h-[240px]">
           <div className="space-y-4 max-w-md text-left">
             <span className="text-[10px] text-slate-800 font-extrabold uppercase tracking-widest flex items-center gap-1.5 bg-[var(--accent-cream)] px-2.5 py-1 rounded w-fit">
               <Sparkles className="w-3.5 h-3.5 text-slate-700" />
@@ -469,7 +469,7 @@ export const Dashboard: React.FC = () => {
         </div>
 
         {/* WIDGET 2: PLACEMENTS MODULE */}
-        <div className="rounded-xl border border-[var(--border-glass)] bg-white p-6 flex flex-col justify-between shadow-sm text-left">
+        <div className="rounded-xl border border-[var(--border-glass)] bg-white p-6 flex flex-col justify-between shadow-sm text-left min-h-[240px]">
           <div className="space-y-3">
             <span className="text-[10px] text-emerald-600 font-extrabold uppercase tracking-widest flex items-center gap-1.5 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded w-fit">
               <Briefcase className="w-3.5 h-3.5" />
@@ -500,7 +500,7 @@ export const Dashboard: React.FC = () => {
         </div>
 
         {/* WIDGET 3: LEADERBOARD BOARD (Flat info side-by-side) */}
-        <div className="rounded-xl border border-[var(--border-glass)] bg-white p-6 shadow-sm flex flex-col justify-between text-left">
+        <div className="rounded-xl border border-[var(--border-glass)] bg-white p-6 shadow-sm flex flex-col justify-between text-left h-[260px]">
           <div className="space-y-3">
             <span className="text-[10px] text-amber-600 font-extrabold uppercase tracking-widest flex items-center gap-1.5 bg-amber-50 border border-amber-100 px-2 py-0.5 rounded w-fit">
               <Trophy className="w-3.5 h-3.5" />
@@ -522,76 +522,82 @@ export const Dashboard: React.FC = () => {
             </div>
           </div>
           
-          <Link to="/profile" className="text-[10px] font-bold text-slate-700 hover:underline flex items-center justify-center gap-0.5 mt-4">
+          <Link to="/profile" className="text-[10px] font-bold text-slate-700 hover:underline flex items-center justify-center gap-0.5 mt-2">
             My Profile Ledger <ChevronRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
         {/* WIDGET 4: CAMPUS NOTICES */}
-        <div className="rounded-xl border border-[var(--border-glass)] bg-white p-6 space-y-4 shadow-sm text-left">
-          <div className="flex justify-between items-center">
-            <span className="text-[10px] text-rose-600 font-extrabold uppercase tracking-widest flex items-center gap-1.5 bg-rose-50 border border-rose-100 px-2 py-0.5 rounded w-fit">
-              <Bell className="w-3.5 h-3.5" />
-              Campus Notices
-            </span>
-            <div className="uiverse-tooltip-container">
-              <Link to="/notices" className="text-xs text-slate-700 font-bold hover:underline">View Board</Link>
-              <span className="uiverse-tooltip">Open notices</span>
+        <div className="rounded-xl border border-[var(--border-glass)] bg-white p-6 shadow-sm text-left h-[260px] flex flex-col justify-between">
+          <div className="space-y-3">
+            <div className="flex justify-between items-center">
+              <span className="text-[10px] text-rose-600 font-extrabold uppercase tracking-widest flex items-center gap-1.5 bg-rose-50 border border-rose-100 px-2 py-0.5 rounded w-fit">
+                <Bell className="w-3.5 h-3.5" />
+                Campus Notices
+              </span>
+              <div className="uiverse-tooltip-container">
+                <Link to="/notices" className="text-xs text-slate-700 font-bold hover:underline">View Board</Link>
+                <span className="uiverse-tooltip">Open notices</span>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              {notices.length === 0 ? (
+                <div className="flex flex-col items-center justify-center py-4 text-[var(--text-secondary)]">
+                  <Inbox className="w-8 h-8 opacity-25" />
+                  <span className="text-[10px] mt-1">No announcements posted</span>
+                </div>
+              ) : (
+                notices.slice(0, 2).map((n) => (
+                  <div
+                    key={n.id}
+                    className="p-2.5 bg-[#FAFAF8] border border-[var(--border-glass)] rounded-xl cursor-pointer hover:border-slate-400 hover:bg-slate-50 transition-all duration-150"
+                    onClick={() => navigate('/notices')}
+                  >
+                    <h4 className="text-xs font-bold truncate text-[var(--text-primary)]">{n.title}</h4>
+                    <p className="text-[10px] text-[var(--text-secondary)] mt-1.5 truncate">{n.content}</p>
+                  </div>
+                ))
+              )}
             </div>
           </div>
-
-          <div className="space-y-3">
-            {notices.length === 0 ? (
-              <div className="flex flex-col items-center justify-center py-6 text-[var(--text-secondary)]">
-                <Inbox className="w-8 h-8 opacity-25" />
-                <span className="text-[10px] mt-1">No announcements posted</span>
-              </div>
-            ) : (
-              notices.slice(0, 2).map((n) => (
-                <div
-                  key={n.id}
-                  className="p-3 bg-[#FAFAF8] border border-[var(--border-glass)] rounded-xl cursor-pointer hover:border-slate-400 hover:bg-slate-50 transition-all duration-150"
-                  onClick={() => navigate('/notices')}
-                >
-                  <h4 className="text-xs font-bold truncate text-[var(--text-primary)]">{n.title}</h4>
-                  <p className="text-[10px] text-[var(--text-secondary)] mt-1.5 truncate">{n.content}</p>
-                </div>
-              ))
-            )}
-          </div>
+          <div className="text-[9px] text-[var(--text-secondary)] font-medium">Click notice card to read full article</div>
         </div>
 
         {/* WIDGET 5: UPCOMING SEMINARS */}
-        <div className="rounded-xl border border-[var(--border-glass)] bg-white p-6 space-y-4 shadow-sm text-left">
-          <div className="flex justify-between items-center">
-            <span className="text-[10px] text-blue-600 font-extrabold uppercase tracking-widest flex items-center gap-1.5 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded w-fit">
-              <Calendar className="w-3.5 h-3.5" />
-              Seminars Grid
-            </span>
-            <div className="uiverse-tooltip-container">
-              <Link to="/events" className="text-xs text-slate-700 font-bold hover:underline">Calendar</Link>
-              <span className="uiverse-tooltip">View full schedule</span>
+        <div className="rounded-xl border border-[var(--border-glass)] bg-white p-6 shadow-sm text-left h-[260px] flex flex-col justify-between">
+          <div className="space-y-3">
+            <div className="flex justify-between items-center">
+              <span className="text-[10px] text-blue-600 font-extrabold uppercase tracking-widest flex items-center gap-1.5 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded w-fit">
+                <Calendar className="w-3.5 h-3.5" />
+                Seminars Grid
+              </span>
+              <div className="uiverse-tooltip-container">
+                <Link to="/events" className="text-xs text-slate-700 font-bold hover:underline">Calendar</Link>
+                <span className="uiverse-tooltip">View full schedule</span>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              {events.length === 0 ? (
+                <div className="flex flex-col items-center justify-center py-4 text-[var(--text-secondary)]">
+                  <Inbox className="w-8 h-8 opacity-25" />
+                  <span className="text-[10px] mt-1">No upcoming seminars</span>
+                </div>
+              ) : (
+                events.slice(0, 2).map((e) => (
+                  <div key={e.id} className="p-2.5 bg-[#FAFAF8] border border-[var(--border-glass)] rounded-xl">
+                    <h4 className="text-xs font-bold truncate text-[var(--text-primary)]">{e.title}</h4>
+                    <div className="flex items-center justify-between mt-2 text-[10px] text-[var(--text-secondary)]">
+                      <span>{e.location}</span>
+                      <span className="text-slate-800 font-semibold">RSVP: {e.rsvp_count}</span>
+                    </div>
+                  </div>
+                ))
+              )}
             </div>
           </div>
-
-          <div className="space-y-3">
-            {events.length === 0 ? (
-              <div className="flex flex-col items-center justify-center py-6 text-[var(--text-secondary)]">
-                <Inbox className="w-8 h-8 opacity-25" />
-                <span className="text-[10px] mt-1">No upcoming seminars</span>
-              </div>
-            ) : (
-              events.slice(0, 2).map((e) => (
-                <div key={e.id} className="p-3 bg-[#FAFAF8] border border-[var(--border-glass)] rounded-xl">
-                  <h4 className="text-xs font-bold truncate text-[var(--text-primary)]">{e.title}</h4>
-                  <div className="flex items-center justify-between mt-2 text-[10px] text-[var(--text-secondary)]">
-                    <span>{e.location}</span>
-                    <span className="text-slate-800 font-semibold">RSVP: {e.rsvp_count}</span>
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
+          <div className="text-[9px] text-[var(--text-secondary)] font-medium">Earn +15 XP per seminar session registration</div>
         </div>
 
       </div>
