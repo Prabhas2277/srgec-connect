@@ -110,7 +110,7 @@ export const Navigation: React.FC<NavigationProps> = ({ children }) => {
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 ${
                   isActive
                     ? 'bg-[var(--accent-cream)] text-[var(--text-primary)] font-bold border-l-2 border-slate-700 shadow-sm'
-                    : 'text-[var(--text-secondary)] hover:bg-white hover:text-[var(--text-primary)]'
+                    : 'text-[var(--text-secondary)] hover:bg-[var(--bg-primary)] hover:text-[var(--text-primary)]'
                 }`}
               >
                 <Icon className={`w-4 h-4 ${isActive ? 'text-slate-800' : 'text-slate-500'}`} />
@@ -124,7 +124,7 @@ export const Navigation: React.FC<NavigationProps> = ({ children }) => {
         <div className="border-t border-[var(--border-glass)] pt-4 space-y-2">
           <Link
             to="/profile"
-            className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-[var(--text-secondary)] hover:bg-white hover:text-[var(--text-primary)] transition-all"
+            className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-[var(--text-secondary)] hover:bg-[var(--bg-primary)] hover:text-[var(--text-primary)] transition-all"
           >
             {user.profile_photo_url ? (
               <img
