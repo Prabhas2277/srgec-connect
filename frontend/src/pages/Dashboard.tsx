@@ -187,7 +187,6 @@ export const Dashboard: React.FC = () => {
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-[var(--border-glass)] pb-5 mb-5">
           <div>
             <h2 className="text-lg font-black text-[var(--text-primary)]">Interactive Campus Directory</h2>
-            <p className="text-xs text-[var(--text-secondary)] mt-1">Select departments, blocks, or services below to open campus hub portals.</p>
           </div>
 
           {/* Filtering and search tools */}

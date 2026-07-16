@@ -139,6 +139,12 @@ export const PlacementPortal: React.FC = () => {
   const handleAnalyzeResume = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!resumeText.trim()) return;
+
+    const currentCount = parseInt(localStorage.getItem('resume_analysis_limit') || '0', 10);
+    if (currentCount >= 3) {
+      return;
+    }
+
     setAnalyzingResume(true);
     setAnalysisResult(null);
     try {
@@ -147,6 +153,9 @@ export const PlacementPortal: React.FC = () => {
         body: JSON.stringify({ resume_text: resumeText })
       });
       setAnalysisResult(data);
+
+      const nextCount = currentCount + 1;
+      localStorage.setItem('resume_analysis_limit', String(nextCount));
     } catch (err) {
       console.error(err);
     } finally {
@@ -599,6 +608,11 @@ export const PlacementPortal: React.FC = () => {
           </p>
 
           <form onSubmit={handleAnalyzeResume} className="space-y-4 pt-1">
+            {parseInt(localStorage.getItem('resume_analysis_limit') || '0', 10) >= 3 && (
+              <div className="p-3 bg-rose-50 border border-rose-100 rounded-xl text-xs text-rose-600 font-semibold text-center">
+                ⚠️ Daily resume analysis limit (3/3 evaluations) reached to conserve server API key availability.
+              </div>
+            )}
             <textarea
               placeholder="Paste resume content here (e.g., programming languages, core projects, academic history)..."
               value={resumeText}

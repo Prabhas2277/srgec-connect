@@ -20,11 +20,48 @@ interface DialogueMessage {
   text: string;
 }
 
+const JNTUK_CURRICULUM: Record<string, Record<string, string[]>> = {
+  R23: {
+    CSE: ['Python Programming', 'Data Structures', 'Mathematical Foundations of Computer Science', 'Java Programming', 'Database Management Systems', 'Operating Systems', 'Web Development (HTML/CSS/JS, React)', 'Software Engineering', 'AI & Machine Learning'],
+    IT: ['Python Programming', 'Data Structures', 'Java Programming', 'Database Management Systems', 'Operating Systems', 'Web Development', 'Software Engineering', 'Computer Networks'],
+    ECE: ['Network Analysis', 'Electronic Devices and Circuits', 'Signals and Systems', 'Digital Logic Design', 'Analog and Digital Communications', 'Microprocessors & Microcontrollers', 'VLSI Design'],
+    EEE: ['Electrical Circuit Analysis', 'DC Machines & Transformers', 'Power Systems', 'Control Systems', 'Power Electronics', 'Microprocessors & Microcontrollers'],
+    ME: ['Engineering Mechanics', 'Thermodynamics', 'Fluid Mechanics & Hydraulic Machines', 'Kinematics of Machinery', 'Machine Drawing', 'CAD/CAM'],
+    CE: ['Strength of Materials', 'Fluid Mechanics', 'Surveying', 'Structural Analysis', 'Concrete Technology', 'Geotechnical Engineering']
+  },
+  R20: {
+    CSE: ['C Programming', 'Data Structures', 'Python Programming', 'Object Oriented Programming through Java', 'Database Management Systems', 'Operating Systems', 'Computer Networks', 'Software Engineering', 'Compiler Design', 'Artificial Intelligence'],
+    IT: ['C Programming', 'Data Structures', 'Python Programming', 'Java Programming', 'Database Management Systems', 'Operating Systems', 'Computer Networks', 'Software Engineering', 'Web Technologies'],
+    ECE: ['Electronic Devices and Circuits', 'Digital System Design', 'Signals and Systems', 'Network Analysis', 'Analog Communications', 'Linear Integrated Circuits', 'Microprocessors and Microcontrollers', 'VLSI Design'],
+    EEE: ['Electrical Circuit Analysis', 'Electrical Machines', 'Control Systems', 'Power Systems', 'Power Electronics', 'Microprocessors and Microcontrollers'],
+    ME: ['Thermodynamics', 'Fluid Mechanics', 'Material Science', 'Kinematics of Machinery', 'Dynamics of Machinery', 'Design of Machine Members'],
+    CE: ['Engineering Mechanics', 'Strength of Materials', 'Fluid Mechanics', 'Surveying', 'Structural Analysis', 'Geotechnical Engineering']
+  },
+  R19: {
+    CSE: ['C Programming', 'Data Structures', 'Object Oriented Programming through C++', 'Java Programming', 'Database Management Systems', 'Operating Systems', 'Compiler Design', 'Computer Networks', 'Web Technologies', 'Software Engineering'],
+    IT: ['C Programming', 'Data Structures', 'OOP through C++', 'Java Programming', 'Database Management Systems', 'Operating Systems', 'Computer Networks', 'Software Engineering', 'Web Technologies'],
+    ECE: ['Electronic Devices and Circuits', 'Signals & Systems', 'Switching Theory and Logic Design', 'Analog Communications', 'Digital Communications', 'VLSI Design'],
+    EEE: ['Electrical Circuit Analysis', 'DC Machines & Transformers', 'AC Machines', 'Control Systems', 'Power Systems', 'Power Electronics'],
+    ME: ['Engineering Mechanics', 'Thermodynamics', 'Fluid Mechanics', 'Kinematics of Machinery', 'Dynamics of Machinery'],
+    CE: ['Strength of Materials', 'Fluid Mechanics', 'Surveying', 'Concrete Technology', 'Geotechnical Engineering']
+  },
+  R16: {
+    CSE: ['C Programming', 'Data Structures', 'Java Programming', 'Database Management Systems', 'Operating Systems', 'Computer Networks', 'Software Engineering', 'Compiler Design', 'Information Security'],
+    IT: ['C Programming', 'Data Structures', 'Java Programming', 'Database Management Systems', 'Operating Systems', 'Computer Networks', 'Software Engineering', 'Information Security'],
+    ECE: ['Electronic Devices and Circuits', 'Signals & Systems', 'Switching Theory and Logic Design', 'Analog Communications', 'Digital Communications', 'VLSI Design'],
+    EEE: ['Electrical Circuit Analysis', 'DC Machines & Transformers', 'AC Machines', 'Control Systems', 'Power Systems', 'Power Electronics'],
+    ME: ['Engineering Mechanics', 'Thermodynamics', 'Fluid Mechanics', 'Kinematics of Machinery', 'Dynamics of Machinery'],
+    CE: ['Strength of Materials', 'Fluid Mechanics', 'Surveying', 'Concrete Technology', 'Geotechnical Engineering']
+  }
+};
+
 export const MockInterview: React.FC = () => {
-  const { apiFetch, refreshUser } = useAuth();
+  const { user, apiFetch, refreshUser } = useAuth();
   
   // Setup States
-  const [roleType, setRoleType] = useState('Backend');
+  const [regulation, setRegulation] = useState('R23');
+  const [department, setDepartment] = useState(user?.department || 'CSE');
+  const [selectedSubject, setSelectedSubject] = useState('');
   const [session, setSession] = useState<any>(null);
   const [starting, setStarting] = useState(false);
 
@@ -45,15 +82,24 @@ export const MockInterview: React.FC = () => {
     scrollToBottom();
   }, [dialogue, submittingAnswer]);
 
+  // Sync selected subject when regulation/department toggles
+  useEffect(() => {
+    const subs = JNTUK_CURRICULUM[regulation]?.[department] || [];
+    if (subs.length > 0) {
+      setSelectedSubject(subs[0]);
+    }
+  }, [regulation, department]);
+
   const handleStart = async (e: React.FormEvent) => {
     e.preventDefault();
     setStarting(true);
     setScorecard(null);
     setDialogue([]);
     try {
+      const topicString = `JNTUK ${regulation} Regulation - ${department} Dept - Subject Course: ${selectedSubject}`;
       const data = await apiFetch('/ai/interview/start', {
         method: 'POST',
-        body: JSON.stringify({ role_type: roleType })
+        body: JSON.stringify({ role_type: topicString })
       });
       setSession(data);
       const history = JSON.parse(data.history);
@@ -114,41 +160,76 @@ export const MockInterview: React.FC = () => {
   };
 
   // --- RENDERING CONFIG PANEL ---
-  const renderSetupPanel = () => (
-    <div className="max-w-md mx-auto glass-vision p-6 space-y-6 mt-8">
-      <div className="text-center">
-        <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-violet-600 to-cyan-500 flex items-center justify-center text-white mx-auto mb-3">
-          <UserCheck className="w-6 h-6" />
-        </div>
-        <h3 className="text-lg font-bold text-[var(--text-primary)]">AI Mock Interview Board</h3>
-        <p className="text-xs text-[var(--text-secondary)] mt-1">Select a role template to start a 5-question AI technical/HR dialogue simulation.</p>
-      </div>
+  const renderSetupPanel = () => {
+    const subjectsList = JNTUK_CURRICULUM[regulation]?.[department] || [];
 
-      <form onSubmit={handleStart} className="space-y-4">
-        <div>
-          <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-2">Target Interview Role</label>
-          <select
-            value={roleType}
-            onChange={(e) => setRoleType(e.target.value)}
-            className="w-full glass-input"
+    return (
+      <div className="max-w-md mx-auto glass-vision p-6 space-y-6 mt-8 bg-white border border-[var(--border-glass)] rounded-xl shadow-sm">
+        <div className="text-center">
+          <div className="w-12 h-12 rounded-2xl bg-[#0F172A] border border-[#F59E0B] flex items-center justify-center text-[#F59E0B] mx-auto mb-3 font-bold text-lg">
+            SRG
+          </div>
+          <h3 className="text-lg font-bold text-[var(--text-primary)]">AI Mock Interview Board</h3>
+          <p className="text-xs text-[var(--text-secondary)] mt-1">Practice JNTUK curriculum-compliant academic and technical viva sessions tailored to your regulation syllabus.</p>
+        </div>
+
+        <form onSubmit={handleStart} className="space-y-4">
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-2">Regulation</label>
+              <select
+                value={regulation}
+                onChange={(e) => setRegulation(e.target.value)}
+                className="w-full glass-input"
+              >
+                <option value="R23" className="bg-white">R23 Regulation</option>
+                <option value="R20" className="bg-white">R20 Regulation</option>
+                <option value="R19" className="bg-white">R19 Regulation</option>
+                <option value="R16" className="bg-white">R16 Regulation</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-2">Department</label>
+              <select
+                value={department}
+                onChange={(e) => setDepartment(e.target.value)}
+                className="w-full glass-input"
+              >
+                <option value="CSE" className="bg-white">CSE</option>
+                <option value="IT" className="bg-white">IT</option>
+                <option value="ECE" className="bg-white">ECE</option>
+                <option value="EEE" className="bg-white">EEE</option>
+                <option value="ME" className="bg-white">ME</option>
+                <option value="CE" className="bg-white">CE</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-2">Practice Subject / Course</label>
+            <select
+              value={selectedSubject}
+              onChange={(e) => setSelectedSubject(e.target.value)}
+              className="w-full glass-input"
+            >
+              {subjectsList.map((sub) => (
+                <option key={sub} value={sub} className="bg-white">{sub}</option>
+              ))}
+            </select>
+          </div>
+
+          <button
+            type="submit"
+            disabled={starting}
+            className="w-full bg-[#1F2937] hover:bg-black text-white rounded-lg font-bold text-sm py-3 transition-all duration-150 flex items-center justify-center gap-2 cursor-pointer border-none shadow-sm"
           >
-            <option value="Backend" className="bg-[var(--bg-secondary)]">Backend Engineer (SQL, APIs, Scaling)</option>
-            <option value="Frontend" className="bg-[var(--bg-secondary)]">Frontend Engineer (React, DOM, JS)</option>
-            <option value="HR" className="bg-[var(--bg-secondary)]">HR Behavioral Round (Conflict, Career goals)</option>
-            <option value="Aptitude" className="bg-[var(--bg-secondary)]">Quantitative Aptitude (Logic, Puzzles, Probability)</option>
-          </select>
-        </div>
-
-        <button
-          type="submit"
-          disabled={starting}
-          className="w-full glass-button flex items-center justify-center gap-2 cursor-pointer"
-        >
-          {starting ? <RefreshCw className="w-4 h-4 animate-spin" /> : 'Begin Interview Session'}
-        </button>
-      </form>
-    </div>
-  );
+            {starting ? <RefreshCw className="w-4 h-4 animate-spin" /> : 'Begin Interview Session'}
+          </button>
+        </form>
+      </div>
+    );
+  };
 
   // --- RENDERING ACTIVE DIALOGUE ---
   const renderActiveDialogue = () => {
@@ -162,7 +243,7 @@ export const MockInterview: React.FC = () => {
             <span className="text-xs font-bold text-violet-400 uppercase tracking-widest block">Simulation Details</span>
             <div className="p-3 bg-white/2 border border-[var(--border-glass)] rounded-xl">
               <span className="text-[10px] text-[var(--text-secondary)] block">Target Role</span>
-              <span className="text-sm font-bold block mt-1">{roleType} Drive</span>
+              <span className="text-sm font-bold block mt-1">{selectedSubject}</span>
             </div>
             
             <div className="p-3 bg-white/2 border border-[var(--border-glass)] rounded-xl">

@@ -48,6 +48,17 @@ export const AIAssistant: React.FC = () => {
 
   const handleAsk = async (textToSend: string) => {
     if (!textToSend.trim() || loading) return;
+
+    const currentCount = parseInt(localStorage.getItem('chatbot_query_limit') || '0', 10);
+    if (currentCount >= 5) {
+      const limitMsg: ChatMessage = {
+        id: Math.random().toString(),
+        sender: 'assistant',
+        text: '⚠️ API Key Quota Exhausted: To prevent service disruptions, daily chatbot usage is capped at 5 queries. Please come back tomorrow!'
+      };
+      setMessages((prev) => [...prev, limitMsg]);
+      return;
+    }
     
     // Add user query
     const userMsg: ChatMessage = {
@@ -72,6 +83,9 @@ export const AIAssistant: React.FC = () => {
         text: response.answer
       };
       setMessages((prev) => [...prev, assistantMsg]);
+
+      const nextCount = currentCount + 1;
+      localStorage.setItem('chatbot_query_limit', String(nextCount));
     } catch (err: any) {
       setMessages((prev) => [
         ...prev,
@@ -212,6 +226,11 @@ export const AIAssistant: React.FC = () => {
 
         {/* Chat input box */}
         <div className="p-4 border-t border-[var(--border-glass)]">
+          {parseInt(localStorage.getItem('chatbot_query_limit') || '0', 10) >= 5 && (
+            <div className="mb-3 p-3 bg-rose-50 border border-rose-100 rounded-xl text-xs text-rose-600 font-semibold text-center">
+              ⚠️ Daily chatbot practice limit (5/5 queries) reached to preserve server API key availability.
+            </div>
+          )}
           <form
             onSubmit={(e) => {
               e.preventDefault();

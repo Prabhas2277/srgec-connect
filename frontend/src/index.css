@@ -4,24 +4,27 @@
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-family: var(--font-sans);
   
-  /* Minimal White & Cream Theme Color System */
-  --bg-primary: #FFFFFF;      /* Main canvas background */
-  --bg-secondary: #FAFAF8;    /* Soft Off-White for sidebars, headers, and panels */
-  --border-glass: #E5E7EB;    /* Very light gray for clean borders */
-  --text-primary: #1F2937;    /* Dark gray for robust readable text */
-  --text-secondary: #6B7280;  /* Gray for descriptions and labels */
-  --accent-cream: #F8F3E7;    /* Highlighted sections, cards, and primary buttons */
-  --accent-cream-hover: #EAE3D2; /* Slightly darker cream for hover states */
-  --accent-cyan: #3B82F6;     /* Subtle action blue for active indicators */
-  --glass-bg: #FFFFFF;
+  /* Modern Premium Dark Mode Theme */
+  --bg-primary: #0B0F19;         /* Deep navy canvas */
+  --bg-secondary: #111827;       /* Dark slate sidebar/panels */
+  --bg-card: #151E33;            /* Solid dark blue-slate for cards and boxes */
+  --border-glass: #1F2937;       /* Dark border grid */
+  --text-primary: #F9FAFB;       /* Pure white-slate text */
+  --text-secondary: #9CA3AF;     /* Soft grey description text */
+  --accent-cream: #1F2937;       /* Dark panel highlight */
+  --accent-cream-hover: #374151; /* Dark hover highlight */
+  --accent-cyan: #3B82F6;        /* Subtle action blue */
+  --glass-bg: #111827;
   --glass-blur: none;
-  --panel-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  --panel-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+  --bg-overlay: linear-gradient(rgba(11, 15, 25, 0.85), rgba(11, 15, 25, 0.85));
 }
 
 .light-theme {
-  /* Keep cohesive in light mode triggers */
+  /* Minimal White & Cream Theme Color System */
   --bg-primary: #FFFFFF;
   --bg-secondary: #FAFAF8;
+  --bg-card: #FFFFFF;
   --border-glass: #E5E7EB;
   --text-primary: #1F2937;
   --text-secondary: #6B7280;
@@ -31,12 +34,13 @@
   --glass-bg: #FFFFFF;
   --glass-blur: none;
   --panel-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  --bg-overlay: linear-gradient(rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.72));
 }
 
 body {
   margin: 0;
   background-color: var(--bg-primary);
-  background-image: linear-gradient(rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.72)), url('/campus-main.jpg');
+  background-image: var(--bg-overlay), url('/campus-main.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -421,4 +425,36 @@ input:checked + .uiverse-slider:before {
 
 .uiverse-btn-slide:hover .arrow-icon {
   transform: translateX(3px);
+}
+
+/* Global Theme Mappings for Hardcoded Tailwind classes */
+.bg-white {
+  background-color: var(--bg-card) !important;
+}
+.bg-\[\#FAFAF8\] {
+  background-color: var(--bg-secondary) !important;
+}
+.bg-slate-50, .hover\:bg-slate-50:hover {
+  background-color: var(--bg-secondary) !important;
+}
+.border-slate-100, .border-slate-200 {
+  border-color: var(--border-glass) !important;
+}
+.text-slate-700, .text-slate-800 {
+  color: var(--text-primary) !important;
+}
+.text-slate-600 {
+  color: var(--text-secondary) !important;
+}
+.bg-emerald-50 {
+  background-color: rgba(16, 185, 129, 0.1) !important;
+}
+.bg-rose-50 {
+  background-color: rgba(244, 63, 94, 0.1) !important;
+}
+.bg-blue-50 {
+  background-color: rgba(59, 130, 246, 0.1) !important;
+}
+.bg-amber-50 {
+  background-color: rgba(245, 158, 11, 0.1) !important;
 }

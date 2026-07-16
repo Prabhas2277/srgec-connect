@@ -328,7 +328,7 @@ export const Events: React.FC = () => {
                     onClick={() => handleRSVP(ev.id)}
                     className="glass-button text-xs py-2 px-4 cursor-pointer w-full flex items-center justify-center gap-1.5"
                   >
-                    RSVP Register
+                    Register
                   </button>
                 ) : (
                   <div className="w-full space-y-2">
