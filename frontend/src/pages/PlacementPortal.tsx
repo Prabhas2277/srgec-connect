@@ -215,12 +215,11 @@ export const PlacementPortal: React.FC = () => {
       <div className="relative overflow-hidden rounded-2xl border border-[var(--border-glass)] bg-white p-6 shadow-sm">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
           <div className="flex items-center gap-4">
-            {/* SRGEC Crest Emblem Placeholder */}
-            <div className="w-16 h-16 rounded-xl bg-[#0F172A] border border-[#F59E0B] flex flex-col items-center justify-center text-[#F59E0B] shadow-sm relative flex-shrink-0">
-              <span className="text-xs font-black tracking-widest text-[#F59E0B]">SRGEC</span>
-              <span className="text-[7px] font-bold text-slate-300">ESTD 1998</span>
-              <div className="absolute inset-x-0 bottom-0 h-1 bg-[#F59E0B]"></div>
-            </div>
+            <img
+              src="/logo.png"
+              alt="SRGEC Emblem"
+              className="w-16 h-16 object-contain rounded-xl bg-white border border-[#E5E7EB] p-1 shadow-sm flex-shrink-0"
+            />
             <div>
               <span className="text-[9px] text-[#F59E0B] font-extrabold tracking-widest uppercase">Placement Cell</span>
               <h2 className="text-xl font-black tracking-tight text-[var(--text-primary)] mt-0.5">Seshadri Rao Gudlavalleru Engineering College</h2>

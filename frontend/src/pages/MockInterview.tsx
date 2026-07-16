@@ -166,9 +166,11 @@ export const MockInterview: React.FC = () => {
     return (
       <div className="max-w-md mx-auto glass-vision p-6 space-y-6 mt-8 bg-white border border-[var(--border-glass)] rounded-xl shadow-sm">
         <div className="text-center">
-          <div className="w-12 h-12 rounded-2xl bg-[#0F172A] border border-[#F59E0B] flex items-center justify-center text-[#F59E0B] mx-auto mb-3 font-bold text-lg">
-            SRG
-          </div>
+          <img
+            src="/logo.png"
+            alt="SRGEC Emblem"
+            className="w-14 h-14 mx-auto object-contain bg-white border border-[#E5E7EB] p-1 rounded-2xl shadow-sm mb-3"
+          />
           <h3 className="text-lg font-bold text-[var(--text-primary)]">AI Mock Interview Board</h3>
           <p className="text-xs text-[var(--text-secondary)] mt-1">Practice JNTUK curriculum-compliant academic and technical viva sessions tailored to your regulation syllabus.</p>
         </div>
