@@ -243,9 +243,6 @@ export const Dashboard: React.FC = () => {
                     <h3 className="text-base font-extrabold text-[var(--text-primary)] mt-1">{b.name}</h3>
                     <p className="text-xs text-[var(--text-secondary)] mt-1 leading-relaxed">{b.desc}</p>
                   </div>
-                  <div className="text-[11px] text-[var(--text-primary)] font-bold flex items-center gap-1 border-t border-[var(--border-glass)] pt-3 mt-4">
-                    Open Campus Hub <ChevronRight className="w-3.5 h-3.5" />
-                  </div>
                 </div>
               );
             })
