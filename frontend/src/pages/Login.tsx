@@ -30,15 +30,11 @@ export const Login: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-transparent space-grid-bg px-4 relative overflow-hidden">
-      {/* Sci-Fi Glows */}
-      <div className="bg-glow-purple top-[-200px] left-[-200px] pulse-glow"></div>
-      <div className="bg-glow-cyan bottom-[-200px] right-[-200px] pulse-glow" style={{ animationDelay: '2.5s' }}></div>
-
-      <div className="w-full max-w-md glass-vision p-8 relative z-10">
+    <div className="min-h-screen flex items-center justify-center bg-transparent px-4 relative overflow-hidden">
+      <div className="w-full max-w-md bg-white border border-[var(--border-glass)] p-8 rounded-xl shadow-sm relative z-10">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-tr from-violet-600 to-cyan-500 flex items-center justify-center font-bold text-white text-3xl shadow-xl mb-4">
+          <div className="w-14 h-14 mx-auto rounded-2xl bg-[#0F172A] border border-[#F59E0B] flex items-center justify-center font-bold text-[#F59E0B] text-3xl shadow-sm mb-4">
             S
           </div>
           <h2 className="text-2xl font-bold text-[var(--text-primary)]">Welcome to SRGEC Connect</h2>
@@ -46,7 +42,7 @@ export const Login: React.FC = () => {
         </div>
 
         {error && (
-          <div className="mb-6 p-3 bg-red-500/10 border border-red-500/30 rounded-xl flex items-center gap-3 text-red-400 text-sm">
+          <div className="mb-6 p-3 bg-rose-50 border border-rose-100 rounded-xl flex items-center gap-3 text-rose-600 text-sm">
             <AlertCircle className="w-5 h-5 flex-shrink-0" />
             <span>{error}</span>
           </div>
@@ -89,16 +85,16 @@ export const Login: React.FC = () => {
 
           <div className="flex items-center justify-between text-xs text-[var(--text-secondary)]">
             <label className="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" className="rounded accent-violet-500" />
+              <input type="checkbox" className="rounded accent-slate-600" />
               Remember me
             </label>
-            <a href="#forgot" className="hover:text-violet-400 transition-colors">Forgot password?</a>
+            <a href="#forgot" className="hover:text-slate-800 transition-colors">Forgot password?</a>
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full glass-button flex items-center justify-center gap-2 mt-4 cursor-pointer"
+            className="w-full bg-[#1F2937] hover:bg-black text-white rounded-lg font-bold text-sm py-3 transition-all duration-150 flex items-center justify-center gap-2 cursor-pointer border-none shadow-sm mt-4"
           >
             {loading ? (
               <>
@@ -113,7 +109,7 @@ export const Login: React.FC = () => {
 
         <div className="mt-8 pt-6 border-t border-[var(--border-glass)] text-center text-sm text-[var(--text-secondary)]">
           Don't have an account?{' '}
-          <Link to="/register" className="text-violet-400 font-semibold hover:underline">
+          <Link to="/register" className="text-blue-600 font-semibold hover:underline">
             Register here
           </Link>
         </div>

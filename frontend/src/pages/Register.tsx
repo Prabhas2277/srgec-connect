@@ -49,14 +49,10 @@ export const Register: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-transparent space-grid-bg px-4 py-12 relative overflow-hidden">
-      {/* Sci-Fi Glows */}
-      <div className="bg-glow-purple top-[-200px] left-[-200px] pulse-glow"></div>
-      <div className="bg-glow-cyan bottom-[-200px] right-[-200px] pulse-glow" style={{ animationDelay: '2.5s' }}></div>
-
-      <div className="w-full max-w-lg glass-vision p-8 relative z-10">
+    <div className="min-h-screen flex items-center justify-center bg-transparent px-4 py-12 relative overflow-hidden">
+      <div className="w-full max-w-lg bg-white border border-[var(--border-glass)] p-8 rounded-xl shadow-sm relative z-10">
         <div className="text-center mb-8">
-          <div className="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-tr from-violet-600 to-cyan-500 flex items-center justify-center font-bold text-white text-3xl shadow-xl mb-4">
+          <div className="w-14 h-14 mx-auto rounded-2xl bg-[#0F172A] border border-[#F59E0B] flex items-center justify-center font-bold text-[#F59E0B] text-3xl shadow-sm mb-4">
             S
           </div>
           <h2 className="text-2xl font-bold text-[var(--text-primary)]">Create an Account</h2>
@@ -64,7 +60,7 @@ export const Register: React.FC = () => {
         </div>
 
         {error && (
-          <div className="mb-6 p-3 bg-red-500/10 border border-red-500/30 rounded-xl flex items-center gap-3 text-red-400 text-sm">
+          <div className="mb-6 p-3 bg-rose-50 border border-rose-100 rounded-xl flex items-center gap-3 text-rose-600 text-sm">
             <AlertCircle className="w-5 h-5 flex-shrink-0" />
             <span>{error}</span>
           </div>
@@ -108,84 +104,73 @@ export const Register: React.FC = () => {
 
             <div>
               <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-1.5">
-                Campus Role
+                Role / Type
               </label>
-              <div className="relative">
-                <select
-                  value={role}
-                  onChange={(e) => setRole(e.target.value as any)}
-                  className="w-full glass-input focus:bg-[var(--bg-secondary)]"
-                >
-                  <option value="student" className="bg-[var(--bg-secondary)] text-[var(--text-primary)]">Student</option>
-                  <option value="faculty" className="bg-[var(--bg-secondary)] text-[var(--text-primary)]">Faculty Mentor</option>
-                  <option value="club_coordinator" className="bg-[var(--bg-secondary)] text-[var(--text-primary)]">Club Coordinator</option>
-                </select>
-              </div>
+              <select
+                value={role}
+                onChange={(e: any) => setRole(e.target.value)}
+                className="w-full glass-input"
+              >
+                <option value="student" className="bg-white">Student</option>
+                <option value="faculty" className="bg-white">Faculty Mentor</option>
+                <option value="club_coordinator" className="bg-white">Club Coordinator</option>
+              </select>
             </div>
           </div>
 
-          <div className="border-t border-[var(--border-glass)] pt-4 my-2">
-            <h3 className="text-xs font-bold text-violet-400 uppercase tracking-widest mb-3">Academic Affiliation</h3>
-            
+          <div className="space-y-4 pt-2">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {role === 'faculty' ? (
+                <div>
+                  <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-1.5">
+                    Faculty ID
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g. kiran"
+                    value={facultyId}
+                    onChange={(e) => setFacultyId(e.target.value)}
+                    className="w-full glass-input"
+                    required
+                  />
+                </div>
+              ) : (
+                <div>
+                  <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-1.5">
+                    Roll Number
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g. 22481A0502"
+                    value={rollNumber}
+                    onChange={(e) => setRollNumber(e.target.value)}
+                    className="w-full glass-input"
+                    required
+                  />
+                </div>
+              )}
+
               <div>
                 <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-1.5">
-                  Department / Branch
+                  Department
                 </label>
                 <select
                   value={department}
                   onChange={(e) => setDepartment(e.target.value)}
                   className="w-full glass-input"
                 >
-                  <option value="CSE" className="bg-[var(--bg-secondary)] text-[var(--text-primary)]">Computer Science (CSE)</option>
-                  <option value="IT" className="bg-[var(--bg-secondary)] text-[var(--text-primary)]">Information Technology (IT)</option>
-                  <option value="ECE" className="bg-[var(--bg-secondary)] text-[var(--text-primary)]">Electronics & Comm (ECE)</option>
-                  <option value="EEE" className="bg-[var(--bg-secondary)] text-[var(--text-primary)]">Electrical & Electronics (EEE)</option>
-                  <option value="ME" className="bg-[var(--bg-secondary)] text-[var(--text-primary)]">Mechanical Engineering (ME)</option>
-                  <option value="CE" className="bg-[var(--bg-secondary)] text-[var(--text-primary)]">Civil Engineering (CE)</option>
-                  <option value="AIDS" className="bg-[var(--bg-secondary)] text-[var(--text-primary)]">AI & Data Science (AI&DS)</option>
+                  <option value="CSE" className="bg-white">CSE</option>
+                  <option value="IT" className="bg-white">IT</option>
+                  <option value="ECE" className="bg-white">ECE</option>
+                  <option value="EEE" className="bg-white">EEE</option>
+                  <option value="ME" className="bg-white">ME</option>
+                  <option value="CE" className="bg-white">CE</option>
                 </select>
               </div>
-
-              {role !== 'faculty' ? (
-                <div>
-                  <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-1.5">
-                    Roll Number
-                  </label>
-                  <div className="relative">
-                    <GraduationCap className="absolute left-3 top-3.5 w-4 h-4 text-[var(--text-secondary)]" />
-                    <input
-                      type="text"
-                      placeholder="22481A0501"
-                      value={rollNumber}
-                      onChange={(e) => setRollNumber(e.target.value)}
-                      className="w-full glass-input pl-10"
-                      required
-                    />
-                  </div>
-                </div>
-              ) : (
-                <div>
-                  <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-1.5">
-                    Faculty ID / Username
-                  </label>
-                  <div className="relative">
-                    <GraduationCap className="absolute left-3 top-3.5 w-4 h-4 text-[var(--text-secondary)]" />
-                    <input
-                      type="text"
-                      placeholder="e.g. kiran or F102"
-                      value={facultyId}
-                      onChange={(e) => setFacultyId(e.target.value)}
-                      className="w-full glass-input pl-10"
-                      required
-                    />
-                  </div>
-                </div>
-              )}
             </div>
 
             {role !== 'faculty' && (
-              <div className="grid grid-cols-2 gap-4 mt-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-1.5">
                     Year of Study
@@ -195,10 +180,10 @@ export const Register: React.FC = () => {
                     onChange={(e) => setYear(parseInt(e.target.value))}
                     className="w-full glass-input"
                   >
-                    <option value={1} className="bg-[var(--bg-secondary)]">1st Year</option>
-                    <option value={2} className="bg-[var(--bg-secondary)]">2nd Year</option>
-                    <option value={3} className="bg-[var(--bg-secondary)]">3rd Year</option>
-                    <option value={4} className="bg-[var(--bg-secondary)]">4th Year</option>
+                    <option value={1} className="bg-white">1st Year</option>
+                    <option value={2} className="bg-white">2nd Year</option>
+                    <option value={3} className="bg-white">3rd Year</option>
+                    <option value={4} className="bg-white">4th Year</option>
                   </select>
                 </div>
 
@@ -211,8 +196,8 @@ export const Register: React.FC = () => {
                     onChange={(e) => setSemester(parseInt(e.target.value))}
                     className="w-full glass-input"
                   >
-                    <option value={1} className="bg-[var(--bg-secondary)]">1st Semester</option>
-                    <option value={2} className="bg-[var(--bg-secondary)]">2nd Semester</option>
+                    <option value={1} className="bg-white">1st Semester</option>
+                    <option value={2} className="bg-white">2nd Semester</option>
                   </select>
                 </div>
               </div>
@@ -222,7 +207,7 @@ export const Register: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full glass-button flex items-center justify-center gap-2 mt-4 cursor-pointer"
+            className="w-full bg-[#1F2937] hover:bg-black text-white rounded-lg font-bold text-sm py-3 transition-all duration-150 flex items-center justify-center gap-2 cursor-pointer border-none shadow-sm mt-4"
           >
             {loading ? (
               <>
@@ -237,7 +222,7 @@ export const Register: React.FC = () => {
 
         <div className="mt-8 pt-6 border-t border-[var(--border-glass)] text-center text-sm text-[var(--text-secondary)]">
           Already have an account?{' '}
-          <Link to="/login" className="text-violet-400 font-semibold hover:underline">
+          <Link to="/login" className="text-blue-600 font-semibold hover:underline">
             Login here
           </Link>
         </div>
