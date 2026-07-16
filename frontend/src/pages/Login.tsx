@@ -38,7 +38,6 @@ export const Login: React.FC = () => {
             S
           </div>
           <h2 className="text-2xl font-bold text-[var(--text-primary)]">Welcome to SRGEC Connect</h2>
-          <p className="text-sm text-[var(--text-secondary)] mt-1">AI-Powered Digital Campus Ecosystem</p>
         </div>
 
         {error && (

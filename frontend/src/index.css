@@ -431,11 +431,14 @@ input:checked + .uiverse-slider:before {
 .bg-white {
   background-color: var(--bg-card) !important;
 }
-.bg-\[\#FAFAF8\] {
+.bg-\[\#FAFAF8\], .hover\:bg-\[\#FAFAF8\]:hover {
   background-color: var(--bg-secondary) !important;
 }
 .bg-slate-50, .hover\:bg-slate-50:hover {
   background-color: var(--bg-secondary) !important;
+}
+.hover\:bg-red-50\/50:hover {
+  background-color: rgba(239, 68, 68, 0.12) !important;
 }
 .border-slate-100, .border-slate-200 {
   border-color: var(--border-glass) !important;
