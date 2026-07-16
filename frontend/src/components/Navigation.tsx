@@ -66,20 +66,16 @@ export const Navigation: React.FC<NavigationProps> = ({ children }) => {
     menuItems.push({ name: 'Admin Panel', path: '/admin', icon: Shield });
   }
 
-  // Calculate XP progress (Level up at every 200 XP threshold)
-  const currentLevelXP = user.xp % 200;
-  const xpPercent = Math.min((currentLevelXP / 200) * 100, 100);
-
   const getNotifMeta = (type: string) => {
     switch (type) {
       case 'notice':
-        return { icon: Megaphone, color: 'text-violet-400', bg: 'bg-violet-500/10' };
+        return { icon: Bell, color: 'text-rose-600' };
       case 'placement':
-        return { icon: Briefcase, color: 'text-emerald-400', bg: 'bg-emerald-500/10' };
+        return { icon: Briefcase, color: 'text-emerald-600' };
       case 'event':
-        return { icon: Calendar, color: 'text-cyan-400', bg: 'bg-cyan-500/10' };
+        return { icon: Calendar, color: 'text-blue-600' };
       default:
-        return { icon: Info, color: 'text-pink-400', bg: 'bg-pink-500/10' };
+        return { icon: Bell, color: 'text-slate-600' };
     }
   };
 
@@ -99,30 +95,6 @@ export const Navigation: React.FC<NavigationProps> = ({ children }) => {
             <span className="text-[9px] text-[#F59E0B] font-bold tracking-wider uppercase mt-1 block">
               GUDLAVALLERU
             </span>
-          </div>
-        </div>
-
-        {/* GAMIFIED USER STATUS CARD */}
-        <div className="p-3.5 bg-white border border-[var(--border-glass)] rounded-xl shadow-sm">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-1.5">
-              <Trophy className="w-4 h-4 text-amber-500" />
-              <span className="text-xs font-bold text-[var(--text-primary)]">
-                Level {user.level}
-              </span>
-            </div>
-            <span className="text-[10px] font-bold text-[var(--text-secondary)]">
-              {user.xp} XP
-            </span>
-          </div>
-          <div className="w-full h-1.5 bg-slate-100 rounded-full mt-2 overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-blue-500 to-[#F59E0B] transition-all duration-500"
-              style={{ width: `${xpPercent}%` }}
-            ></div>
-          </div>
-          <div className="text-[9px] text-[var(--text-secondary)] mt-1.5 text-center font-medium">
-            {200 - currentLevelXP} XP to Level {user.level + 1}
           </div>
         </div>
 

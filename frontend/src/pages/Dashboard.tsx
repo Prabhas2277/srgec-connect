@@ -150,7 +150,7 @@ export const Dashboard: React.FC = () => {
     <div className="space-y-8 text-left pb-12 animate-fadeIn">
       
       {/* 1. TOP SUMMARY STATS STRIP (Minimal outlines, clean borders) */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="rounded-xl border border-[var(--border-glass)] bg-white p-5 flex items-center justify-between shadow-sm">
           <div>
             <span className="text-[10px] uppercase font-bold text-[var(--text-secondary)] tracking-wider block">Placement Drives</span>
@@ -178,16 +178,6 @@ export const Dashboard: React.FC = () => {
           </div>
           <div className="w-10 h-10 rounded-lg bg-[#FAFAF8] border border-[var(--border-glass)] flex items-center justify-center">
             <Calendar className="w-5 h-5 text-slate-700" />
-          </div>
-        </div>
-
-        <div className="rounded-xl border border-[var(--border-glass)] bg-white p-5 flex items-center justify-between shadow-sm">
-          <div>
-            <span className="text-[10px] uppercase font-bold text-[var(--text-secondary)] tracking-wider block">Student Rank Ledger</span>
-            <span className="text-2xl font-black text-[var(--text-primary)] mt-1 block">Level {user?.level || 1}</span>
-          </div>
-          <div className="w-10 h-10 rounded-lg bg-[#FAFAF8] border border-[var(--border-glass)] flex items-center justify-center">
-            <Trophy className="w-5 h-5 text-slate-700" />
           </div>
         </div>
       </div>
@@ -296,7 +286,7 @@ export const Dashboard: React.FC = () => {
             <div className="rounded-xl border border-[var(--border-glass)] bg-white p-6 text-left shadow-sm">
               <h3 className="text-sm font-bold text-[var(--text-primary)] mb-4 flex items-center gap-2">
                 <Bell className="w-4 h-4 text-slate-700" />
-                Dispatch Custom Notification (Earn +20 XP)
+                Dispatch Custom Notification
               </h3>
               
               {notifError && (
@@ -499,31 +489,36 @@ export const Dashboard: React.FC = () => {
           </Link>
         </div>
 
-        {/* WIDGET 3: LEADERBOARD BOARD (Flat info side-by-side) */}
+        {/* WIDGET 3: QUICK LINKS DIRECTORY */}
         <div className="rounded-xl border border-[var(--border-glass)] bg-white p-6 shadow-sm flex flex-col justify-between text-left h-[260px]">
           <div className="space-y-3">
             <span className="text-[10px] text-amber-600 font-extrabold uppercase tracking-widest flex items-center gap-1.5 bg-amber-50 border border-amber-100 px-2 py-0.5 rounded w-fit">
-              <Trophy className="w-3.5 h-3.5" />
-              Leaderboard Stats
+              <Compass className="w-3.5 h-3.5" />
+              Quick Shortcuts
             </span>
             
-            <div className="flex items-center justify-between border-b border-[var(--border-glass)] pb-2">
-              <h3 className="text-sm font-extrabold text-[var(--text-primary)]">Level {user?.level || 1} Standing</h3>
-              <span className="text-xs font-bold text-slate-600">#{user?.id || 1} on Campus</span>
+            <div className="border-b border-[var(--border-glass)] pb-2">
+              <h3 className="text-sm font-extrabold text-[var(--text-primary)]">Helpful Links</h3>
             </div>
 
             <div className="space-y-2 mt-1">
-              {leaderboard.slice(0, 3).map((peer, idx) => (
-                <div key={peer.id || idx} className="flex justify-between items-center text-xs border-b border-[#FAFAF8] pb-1">
-                  <span className="text-[var(--text-secondary)] truncate max-w-[120px]">{idx + 1}. {peer.username}</span>
-                  <span className="text-[var(--text-primary)] font-bold">{peer.xp} XP</span>
-                </div>
-              ))}
+              <Link to="/profile" className="flex justify-between items-center text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:underline border-b border-[#FAFAF8] pb-1">
+                <span>My Profile Portal</span>
+                <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+              </Link>
+              <Link to="/resources" className="flex justify-between items-center text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:underline border-b border-[#FAFAF8] pb-1">
+                <span>Academic Resources</span>
+                <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+              </Link>
+              <Link to="/placements" className="flex justify-between items-center text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:underline border-b border-[#FAFAF8] pb-1">
+                <span>Career Placement Portal</span>
+                <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+              </Link>
             </div>
           </div>
           
           <Link to="/profile" className="text-[10px] font-bold text-slate-700 hover:underline flex items-center justify-center gap-0.5 mt-2">
-            My Profile Ledger <ChevronRight className="w-3.5 h-3.5" />
+            View My Profile <ChevronRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
@@ -597,7 +592,7 @@ export const Dashboard: React.FC = () => {
               )}
             </div>
           </div>
-          <div className="text-[9px] text-[var(--text-secondary)] font-medium">Earn +15 XP per seminar session registration</div>
+          <div className="text-[9px] text-[var(--text-secondary)] font-medium">Verify details and register for upcoming sessions</div>
         </div>
 
       </div>

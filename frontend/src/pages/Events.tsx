@@ -180,7 +180,7 @@ export const Events: React.FC = () => {
         <div className="glass-vision p-6 border-violet-500/30">
           <h3 className="text-base font-bold text-[var(--text-primary)] mb-4 flex items-center gap-2">
             <Calendar className="w-5 h-5 text-violet-400" />
-            Create Event Listing (Host receives +30 XP)
+            Create Event Listing
           </h3>
 
           <form onSubmit={handleCreateSubmit} className="space-y-4">
@@ -328,7 +328,7 @@ export const Events: React.FC = () => {
                     onClick={() => handleRSVP(ev.id)}
                     className="glass-button text-xs py-2 px-4 cursor-pointer w-full flex items-center justify-center gap-1.5"
                   >
-                    RSVP Register (+15 XP)
+                    RSVP Register
                   </button>
                 ) : (
                   <div className="w-full space-y-2">
@@ -347,7 +347,7 @@ export const Events: React.FC = () => {
                           onClick={() => setShowQRModal(ev.id)}
                           className="glass-button-secondary text-xs py-2 px-3 w-full flex items-center justify-center gap-1.5 cursor-pointer"
                         >
-                          <QrCode className="w-3.5 h-3.5" /> Verify Attendance (+40 XP)
+                          <QrCode className="w-3.5 h-3.5" /> Verify Attendance
                         </button>
                       ) : (
                         <>
@@ -363,7 +363,7 @@ export const Events: React.FC = () => {
                               onClick={() => setShowFeedbackModal(ev.id)}
                               className="glass-button-secondary text-xs py-2 px-3 w-full flex items-center justify-center gap-1.5 cursor-pointer"
                             >
-                              <FileText className="w-3.5 h-3.5" /> Submit Feedback (+10 XP)
+                              <FileText className="w-3.5 h-3.5" /> Submit Feedback
                             </button>
                           )}
                         </>

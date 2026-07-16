@@ -171,10 +171,9 @@ export const MockInterview: React.FC = () => {
             </div>
           </div>
 
-          <div className="p-3 bg-violet-950/20 border border-violet-500/20 rounded-xl text-center">
-            <span className="text-xs font-bold text-violet-300 block">XP Multiplier Potential</span>
-            <span className="text-xl font-extrabold text-[var(--text-primary)] block my-1">+100 XP</span>
-            <span className="text-[9px] text-[var(--text-secondary)] block">Awarded instantly upon completing evaluation criteria.</span>
+          <div className="p-3 bg-[#FAFAF8] border border-[var(--border-glass)] rounded-xl text-center">
+            <span className="text-xs font-bold text-[var(--text-primary)] block">AI Feedback Assessment</span>
+            <span className="text-[10px] text-[var(--text-secondary)] mt-1 block">A comprehensive evaluation scorecard will be compiled after answering 5 questions.</span>
           </div>
         </div>
 
@@ -253,7 +252,7 @@ export const MockInterview: React.FC = () => {
       <div className="glass-vision p-6 text-center bg-gradient-to-r from-violet-900/30 via-violet-950/15 to-cyan-950/10 border-violet-500/30">
         <Award className="w-12 h-12 text-amber-400 mx-auto mb-3" />
         <h3 className="text-xl font-bold">Interview Assessment Report</h3>
-        <p className="text-xs text-[var(--text-secondary)] mt-1">Excellent training run completed. XP rewards loaded to profile.</p>
+        <p className="text-xs text-[var(--text-secondary)] mt-1">Excellent training run completed. Evaluation summary loaded below.</p>
 
         {/* Rating numbers */}
         <div className="mt-6 flex justify-center gap-8">
@@ -263,8 +262,8 @@ export const MockInterview: React.FC = () => {
           </div>
           <div className="border-r border-[var(--border-glass)]"></div>
           <div className="text-center">
-            <span className="text-3xl font-extrabold text-cyan-400">+100 XP</span>
-            <span className="text-[10px] text-[var(--text-secondary)] uppercase block font-semibold mt-1">Earned Reward</span>
+            <span className="text-3xl font-extrabold text-emerald-600">Passed</span>
+            <span className="text-[10px] text-[var(--text-secondary)] uppercase block font-semibold mt-1">Evaluation Status</span>
           </div>
         </div>
       </div>
@@ -346,7 +345,7 @@ export const MockInterview: React.FC = () => {
       {!dialogue.length && !scorecard && (
         <div>
           <h2 className="text-2xl font-bold tracking-tight text-[var(--text-primary)]">AI Mock Interview Board</h2>
-          <p className="text-sm text-[var(--text-secondary)]">Simulate technical and HR campus interviews to earn XP and receive feedback card assessments.</p>
+          <p className="text-sm text-[var(--text-secondary)]">Simulate technical and HR campus interviews and receive detailed feedback card assessments.</p>
         </div>
       )}
 

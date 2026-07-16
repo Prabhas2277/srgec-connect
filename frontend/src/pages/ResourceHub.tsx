@@ -93,7 +93,7 @@ export const ResourceHub: React.FC = () => {
         body: formData
       });
 
-      setSuccess('Resource uploaded successfully! +50 XP Awarded.');
+      setSuccess('Resource uploaded successfully!');
       setTitle('');
       setDescription('');
       setSubject('');
@@ -132,7 +132,7 @@ export const ResourceHub: React.FC = () => {
         <div className="glass-vision p-6 border-violet-500/30">
           <h3 className="text-lg font-bold text-[var(--text-primary)] mb-4 flex items-center gap-2">
             <UploadCloud className="w-5 h-5 text-violet-400" />
-            Upload New Resource (Earn +50 XP!)
+            Upload New Resource
           </h3>
 
           {error && (

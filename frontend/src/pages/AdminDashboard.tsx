@@ -99,7 +99,7 @@ export const AdminDashboard: React.FC = () => {
                   <th className="pb-3">Name</th>
                   <th className="pb-3">Role</th>
                   <th className="pb-3">Department</th>
-                  <th className="pb-3 text-right">XP Points</th>
+                  <th className="pb-3 text-right">Roll / ID</th>
                   <th className="pb-3 text-right">Actions</th>
                 </tr>
               </thead>
@@ -109,7 +109,7 @@ export const AdminDashboard: React.FC = () => {
                     <td className="py-3 font-semibold">{usr.full_name}<br/><span className="text-[9px] text-[var(--text-secondary)]">{usr.email}</span></td>
                     <td className="py-3 capitalize text-[var(--text-secondary)]">{usr.role.replace('_', ' ')}</td>
                     <td className="py-3">{usr.department || 'N/A'}</td>
-                    <td className="py-3 text-right font-bold text-violet-400">{usr.xp}</td>
+                    <td className="py-3 text-right font-semibold text-[var(--text-primary)]">{usr.roll_number || 'N/A'}</td>
                     <td className="py-3 text-right">
                       <button
                         onClick={() => handleDeleteUser(usr.id)}
@@ -151,7 +151,7 @@ export const AdminDashboard: React.FC = () => {
                 [08:24:42] User amit@srgec.edu.in created NoticeMid-I examinations schedule.
               </div>
               <div className="p-2.5 bg-black/10 rounded-lg border border-[var(--border-glass)]">
-                [08:23:51] Student pavan@srgec.edu.in completed AI Mock Interview. Awarded +100 XP.
+                [08:23:51] Student pavan@srgec.edu.in completed AI Mock Interview practice simulation.
               </div>
               <div className="p-2.5 bg-black/10 rounded-lg border border-[var(--border-glass)]">
                 [08:21:18] Database context seeded: loaded 6 mock student nodes.

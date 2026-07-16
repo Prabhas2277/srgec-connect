@@ -124,10 +124,10 @@ export const AIAssistant: React.FC = () => {
           </div>
         </div>
 
-        <div className="p-3 bg-violet-950/15 border border-violet-500/10 rounded-xl text-center">
-          <span className="text-[10px] text-violet-300 font-semibold block">Studying Rewards</span>
+        <div className="p-3 bg-[#FAFAF8] border border-[var(--border-glass)] rounded-xl text-center">
+          <span className="text-[10px] text-[var(--text-primary)] font-semibold block">Academic Tip</span>
           <span className="text-[9px] text-[var(--text-secondary)] mt-1 block">
-            Each concept query triggers +5 XP points for student rank level-ups.
+            Use Expert Mode to generate custom code blocks and mathematical proofs.
           </span>
         </div>
       </div>

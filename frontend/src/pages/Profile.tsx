@@ -107,9 +107,6 @@ export const Profile: React.FC = () => {
     }
   };
 
-  const currentLevelXP = user.xp % 200;
-  const xpPercent = Math.min((currentLevelXP / 200) * 100, 100);
-
   // Parse arrays for rendering
   let parsedSkills: string[] = [];
   try { parsedSkills = JSON.parse(user.skills || '[]'); } catch {}
@@ -140,10 +137,6 @@ export const Profile: React.FC = () => {
               <User className="w-12 h-12 text-violet-400" />
             </div>
           )}
-          
-          <div className="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-gradient-to-r from-violet-600 to-cyan-500 flex items-center justify-center font-bold text-white text-xs border-2 border-[var(--bg-primary)]">
-            {user.level}
-          </div>
         </div>
 
         {/* Profile Meta Info */}
@@ -187,23 +180,6 @@ export const Profile: React.FC = () => {
               </a>
             )}
           </div>
-        </div>
-
-        {/* Level metrics summary */}
-        <div className="w-full md:w-56 p-4 bg-slate-950/20 border border-[var(--border-glass)] rounded-2xl">
-          <div className="flex justify-between items-center text-xs">
-            <span className="font-semibold flex items-center gap-1">
-              <Trophy className="w-4 h-4 text-amber-400" />
-              XP Meter
-            </span>
-            <span className="font-bold text-violet-400">{user.xp} XP</span>
-          </div>
-          <div className="w-full h-2 bg-slate-800 rounded-full mt-3 overflow-hidden">
-            <div className="h-full bg-gradient-to-r from-violet-500 to-cyan-400" style={{ width: `${xpPercent}%` }}></div>
-          </div>
-          <span className="text-[9px] text-[var(--text-secondary)] mt-2 block text-center">
-            {200 - currentLevelXP} XP to Level {user.level + 1}
-          </span>
         </div>
 
         <button
