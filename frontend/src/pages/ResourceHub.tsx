@@ -342,8 +342,20 @@ export const ResourceHub: React.FC = () => {
                 </button>
                 
                 <a
-                  href={`http://localhost:8000${res.file_url}`}
+                  href={`${
+                    (() => {
+                      const apiEndpoint = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1';
+                      try {
+                        const url = new URL(apiEndpoint, window.location.origin);
+                        return `${url.protocol}//${url.host}`;
+                      } catch {
+                        return '';
+                      }
+                    })()
+                  }${res.file_url}`}
                   download
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="glass-button-secondary text-xs py-1 px-3 flex items-center gap-1 cursor-pointer"
                 >
                   <Download className="w-3.5 h-3.5" />

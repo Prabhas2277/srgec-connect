@@ -40,7 +40,14 @@ export const WebSocketProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       return;
     }
 
-    const wsUrl = `ws://localhost:8000/ws/${user.id}`;
+    const apiEndpoint = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1';
+    let absoluteApiUrl = apiEndpoint;
+    if (apiEndpoint.startsWith('/')) {
+      absoluteApiUrl = `${window.location.protocol}//${window.location.host}${apiEndpoint}`;
+    }
+    const parsedUrl = new URL(absoluteApiUrl);
+    const wsProtocol = parsedUrl.protocol === 'https:' ? 'wss:' : 'ws:';
+    const wsUrl = `${wsProtocol}//${parsedUrl.host}/ws/${user.id}`;
     const ws = new WebSocket(wsUrl);
     socketRef.current = ws;
 

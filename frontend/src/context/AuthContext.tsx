@@ -39,7 +39,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [token, setToken] = useState<string | null>(() => localStorage.getItem('token'));
   const [loading, setLoading] = useState(true);
 
-  const API_URL = 'http://localhost:8000/api/v1';
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1';
 
   const apiFetch = async (path: string, options: RequestInit = {}) => {
     const headers = new Headers(options.headers || {});
