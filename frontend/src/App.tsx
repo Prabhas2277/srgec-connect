@@ -19,6 +19,7 @@ import { SocialFeed } from './pages/SocialFeed';
 import { NoticeBoard } from './pages/NoticeBoard';
 import { Profile } from './pages/Profile';
 import { AdminDashboard } from './pages/AdminDashboard';
+import { FinanceTypographyDemo } from './pages/FinanceTypographyDemo';
 
 // Route guards
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -63,6 +64,7 @@ const AppContent: React.FC = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/finance-typography-demo" element={<FinanceTypographyDemo />} />
         
         {/* Protected Dashboard Layout routes */}
         <Route
