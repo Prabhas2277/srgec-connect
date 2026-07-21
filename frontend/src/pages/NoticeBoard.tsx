@@ -225,7 +225,7 @@ export const NoticeBoard: React.FC = () => {
                 placeholder="Search notice titles or contents..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full glass-input pl-10"
+                className="w-full glass-input glass-input-search"
               />
             </div>
 

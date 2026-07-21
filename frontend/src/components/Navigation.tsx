@@ -84,10 +84,11 @@ export const Navigation: React.FC<NavigationProps> = ({ children }) => {
       {/* SIDEBAR */}
       <aside className="w-64 border-r border-[var(--border-glass)] bg-[var(--bg-secondary)] fixed inset-y-0 left-0 z-20 flex flex-col p-5 m-0">
         <div className="flex items-center gap-3 px-1 py-4 border-b border-[var(--border-glass)] mb-4">
-          {/* Institutional Gold/Navy Logo Placeholder */}
-          <div className="w-10 h-10 rounded-lg bg-[#0F172A] border border-[#F59E0B] flex items-center justify-center font-bold text-[#F59E0B] text-xs shadow-sm relative overflow-hidden flex-shrink-0">
-            SRG
-          </div>
+          <img
+            src="/logo.png"
+            alt="SRGEC Emblem"
+            className="w-10 h-10 object-contain rounded-lg flex-shrink-0 bg-white border border-[#E5E7EB] p-0.5 shadow-sm"
+          />
           <div className="text-left">
             <h1 className="text-sm font-black tracking-tight text-[var(--text-primary)] m-0 leading-none">
               SRGEC Connect

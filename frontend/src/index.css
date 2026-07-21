@@ -18,57 +18,6 @@
   --glass-blur: none;
   --panel-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
   --bg-overlay: linear-gradient(rgba(11, 15, 25, 0.85), rgba(11, 15, 25, 0.85));
-  
-  /* Typography System Demo Variables */
-  --font-personal-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-personal-ui-friendly: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-personal-num: 'IBM Plex Mono', monospace;
-}
-
-/* Typography Utility Classes */
-.font-finance-ui {
-  font-family: var(--font-personal-ui) !important;
-}
-.font-finance-ui-friendly {
-  font-family: var(--font-personal-ui-friendly) !important;
-}
-.font-finance-num {
-  font-family: var(--font-personal-num) !important;
-  font-variant-numeric: tabular-nums !important;
-}
-
-.finance-display {
-  font-size: 38px !important;
-  font-weight: 700 !important;
-  line-height: 1.2 !important;
-  letter-spacing: -0.5px !important;
-}
-.finance-h1 {
-  font-size: 23px !important;
-  font-weight: 600 !important;
-  line-height: 1.2 !important;
-}
-.finance-h2 {
-  font-size: 19px !important;
-  font-weight: 600 !important;
-  line-height: 1.2 !important;
-}
-.finance-body-large {
-  font-size: 16px !important;
-  line-height: 1.4 !important;
-}
-.finance-body {
-  font-size: 14px !important;
-  line-height: 1.4 !important;
-}
-.finance-caption {
-  font-size: 12.5px !important;
-  line-height: 1.5 !important;
-}
-.finance-micro {
-  font-size: 11px !important;
-  font-weight: 500 !important;
-  line-height: 1.2 !important;
 }
 
 .light-theme {
@@ -151,6 +100,14 @@ body {
 .glass-input:focus {
   border-color: #9CA3AF;
   box-shadow: 0 0 0 1px #9CA3AF;
+}
+
+.glass-input-search {
+  padding-left: 40px !important;
+}
+
+.glass-input-icon {
+  padding-left: 44px !important;
 }
 
 /* Redesigned flat buttons */

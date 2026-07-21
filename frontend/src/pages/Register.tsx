@@ -52,9 +52,11 @@ export const Register: React.FC = () => {
     <div className="min-h-screen flex items-center justify-center bg-transparent px-4 py-12 relative overflow-hidden">
       <div className="w-full max-w-lg bg-white border border-[var(--border-glass)] p-8 rounded-xl shadow-sm relative z-10">
         <div className="text-center mb-8">
-          <div className="w-14 h-14 mx-auto rounded-2xl bg-[#0F172A] border border-[#F59E0B] flex items-center justify-center font-bold text-[#F59E0B] text-3xl shadow-sm mb-4">
-            S
-          </div>
+          <img
+            src="/logo.png"
+            alt="SRGEC Emblem"
+            className="w-14 h-14 mx-auto object-contain bg-white border border-[#E5E7EB] p-1 rounded-2xl shadow-sm mb-4"
+          />
           <h2 className="text-2xl font-bold text-[var(--text-primary)]">Create an Account</h2>
           <p className="text-sm text-[var(--text-secondary)] mt-1">Join the SRGEC Digital Campus Hub</p>
         </div>
@@ -78,7 +80,7 @@ export const Register: React.FC = () => {
                 placeholder="John Doe"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                className="w-full glass-input pl-11"
+                className="w-full glass-input glass-input-icon"
                 required
               />
             </div>
@@ -96,7 +98,7 @@ export const Register: React.FC = () => {
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full glass-input pl-11"
+                  className="w-full glass-input glass-input-icon"
                   required
                 />
               </div>

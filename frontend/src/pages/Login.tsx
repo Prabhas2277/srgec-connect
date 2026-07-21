@@ -34,9 +34,11 @@ export const Login: React.FC = () => {
       <div className="w-full max-w-md bg-white border border-[var(--border-glass)] p-8 rounded-xl shadow-sm relative z-10">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="w-14 h-14 mx-auto rounded-2xl bg-[#0F172A] border border-[#F59E0B] flex items-center justify-center font-bold text-[#F59E0B] text-3xl shadow-sm mb-4">
-            S
-          </div>
+          <img
+            src="/logo.png"
+            alt="SRGEC Emblem"
+            className="w-14 h-14 mx-auto object-contain bg-white border border-[#E5E7EB] p-1 rounded-2xl shadow-sm mb-4"
+          />
           <h2 className="text-2xl font-bold text-[var(--text-primary)]">Welcome to SRGEC Connect</h2>
         </div>
 
@@ -59,7 +61,7 @@ export const Login: React.FC = () => {
                 placeholder="e.g. 22481A0502 or kiran"
                 value={identifier}
                 onChange={(e) => setIdentifier(e.target.value)}
-                className="w-full glass-input pl-11"
+                className="w-full glass-input glass-input-icon"
                 required
               />
             </div>
@@ -76,7 +78,7 @@ export const Login: React.FC = () => {
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full glass-input pl-11"
+                className="w-full glass-input glass-input-icon"
                 required
               />
             </div>

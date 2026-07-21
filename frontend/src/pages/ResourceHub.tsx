@@ -258,7 +258,7 @@ export const ResourceHub: React.FC = () => {
             placeholder="Search by topic or subject..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full glass-input pl-10"
+            className="w-full glass-input glass-input-search"
           />
         </div>
 
